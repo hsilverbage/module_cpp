@@ -1,0 +1,15 @@
+std::cout = affichage standard (buffer)
+std::cerr = erreur (affichage direct)
+std::clog = log, journalisation (buffer)
+
+std::endl = retour a la ligne + flush
+std::flush = flush : vide le buffer
+
+std::cin = scanf -> std:cin.good(), std:cin.bad(), std:cin.fail() = verfie status
+std:cin.ignore() = 2 param, nb char lecture, char a ignorer
+std:getline = scanf toute la ligne
+std:ws = white space
+
+#include <string>
+
+std::string = char**
