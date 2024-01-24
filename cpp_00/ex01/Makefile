@@ -14,7 +14,7 @@ OBJ_DIR = .obj
 INCLUDES = -I ./includes
 
 SRC = 	$(SRC_DIR)Contact.cpp	\
-		$(SRC_DIR)Phonebook.cpp	\
+		$(SRC_DIR)PhoneBook.cpp	\
 		$(SRC_DIR)main.cpp
 
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)

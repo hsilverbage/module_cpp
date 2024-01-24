@@ -1,4 +1,4 @@
-NAME	= telephone
+NAME	= hi_this_is_brain
 
 CC		= c++
 FLAGS	= -std=c++98 -Wall -Wextra -Werror
@@ -8,16 +8,13 @@ GREEN		=	\e[92;5;118m
 YELLOW		=	\e[93;5;226m
 END			=	\e[0m
 
-SRC_DIR = ./sources/
 OBJ_DIR = .obj
 
 INCLUDES = -I ./includes
 
-SRC = 	$(SRC_DIR)Contact.cpp	\
-		$(SRC_DIR)Phonebook.cpp	\
-		$(SRC_DIR)main.cpp
+SRC = 	main.cpp
 
-OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+OBJ = $(SRC:%.c=$(OBJ_DIR)/%.o)
 
 all: $(NAME)
 
