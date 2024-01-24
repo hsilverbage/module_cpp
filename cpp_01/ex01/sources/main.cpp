@@ -7,7 +7,7 @@ int	main (void)
 	for (int i = 0; i < 10; i++)
 		Horde[i].announce();
 
-	// delete [] Horde;
+	delete [] Horde;
 
 	return (0);
 }
