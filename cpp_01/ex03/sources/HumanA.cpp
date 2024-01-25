@@ -9,7 +9,10 @@ HumanA::~HumanA()
 {
 
 }
+
 void	HumanA::attack() const
 {
-	std::cout << this->_name << " attacks with their " << this->_weapon.getType() << std::endl;
-}
+if (this->_weapon.getType() == "")
+		std::cout << this->_name << " has no weapon to attack and runs away like a coward" << std::endl;
+	else
+		std::cout << this->_name << " attacks with their " << this->_weapon.getType() << std::endl;}

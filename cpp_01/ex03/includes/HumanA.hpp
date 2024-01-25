@@ -11,6 +11,7 @@ class	HumanA {
 		~HumanA();
 
 		void	attack() const;
+		
 	private :
 		std::string _name;
 		Weapon&		_weapon;

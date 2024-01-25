@@ -2,6 +2,7 @@
 #define HUMANB_HPP
 
 #include <Weapon.hpp>
+#include <cstdlib>
 
 class HumanB {
 
@@ -12,9 +13,10 @@ class HumanB {
 
 		void	attack() const;
 		void	setWeapon(Weapon& weapon);
-		Weapon	*weapon;
+
 	private :
 		std::string _name;
+		Weapon*	_weapon;
 };
 
 #endif
