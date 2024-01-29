@@ -15,12 +15,8 @@ Harl::~Harl()
 
 void	Harl::complain(std::string level)
 {
-	std::string	str[4];
+	std::string	str[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 
-	str[0] = "DEBUG";
-	str[1] = "INFO";
-	str[2] = "WARNING";
-	str[3] = "ERROR";
 	for (size_t i = 0; i < 4; i++)
 	{
 		if (str[i] == level)
