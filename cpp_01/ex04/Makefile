@@ -13,7 +13,8 @@ OBJ_DIR = .obj
 
 INCLUDES = -I ./includes
 
-SRC = 	$(SRC_DIR)main.cpp
+SRC =	$(SRC_DIR)FileReplacer.cpp \
+		$(SRC_DIR)main.cpp
 
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
