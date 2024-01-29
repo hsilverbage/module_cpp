@@ -1,4 +1,4 @@
-NAME	= telephone
+NAME	= harl
 
 CC		= c++
 FLAGS	= -std=c++98 -Wall -Wextra -Werror
@@ -13,8 +13,7 @@ OBJ_DIR = .obj
 
 INCLUDES = -I ./includes
 
-SRC = 	$(SRC_DIR)Contact.cpp	\
-		$(SRC_DIR)Phonebook.cpp	\
+SRC = 	$(SRC_DIR)Harl.cpp	\
 		$(SRC_DIR)main.cpp
 
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
