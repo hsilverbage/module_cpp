@@ -6,7 +6,7 @@
 /*   By: hsilverb <hsilverb@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 13:31:18 by hsilverb          #+#    #+#             */
-/*   Updated: 2024/01/30 13:31:19 by hsilverb         ###   ########lyon.fr   */
+/*   Updated: 2024/01/30 16:43:21 by hsilverb         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ class Weapon {
 
 	public:
 
+		Weapon();
 		Weapon(std::string type);
 		~Weapon();
 

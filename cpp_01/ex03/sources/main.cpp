@@ -6,7 +6,7 @@
 /*   By: hsilverb <hsilverb@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 13:31:28 by hsilverb          #+#    #+#             */
-/*   Updated: 2024/01/30 13:31:29 by hsilverb         ###   ########lyon.fr   */
+/*   Updated: 2024/01/30 16:53:58 by hsilverb         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int main()
 		bob.attack();
 	}
 	{
-
 		Weapon club = Weapon("crude spiked club");
 		HumanB jim("Jim");
 		jim.setWeapon(club);
