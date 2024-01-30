@@ -6,7 +6,7 @@
 /*   By: hsilverb <hsilverb@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 13:57:22 by hsilverb          #+#    #+#             */
-/*   Updated: 2024/01/30 13:57:23 by hsilverb         ###   ########lyon.fr   */
+/*   Updated: 2024/01/30 17:11:37 by hsilverb         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,10 @@ void	Harl::complain(std:: string level)
 	{
 		case	0:
 			this->_debug();
-			break;
 		case	1:
 			this->_info();
-			break;
 		case	2:
 			this->_warning();
-			break;
 		case	3:
 			this->_error();
 			break ;
