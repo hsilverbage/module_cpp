@@ -6,7 +6,7 @@
 /*   By: hsilverb <hsilverb@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 13:51:45 by hsilverb          #+#    #+#             */
-/*   Updated: 2024/01/30 13:51:46 by hsilverb         ###   ########lyon.fr   */
+/*   Updated: 2024/01/30 16:59:26 by hsilverb         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	FileReplacer::replaceFile(std::string s1, std::string s2) const
 				{
 					line.erase(pos, s1.length());
 					line.insert(pos, s2);
-					pos = line.find(s1);
+					pos = line.find(s1, (pos + s2.length()));
 				}
 				while (pos != std::string::npos);
 			}
