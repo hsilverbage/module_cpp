@@ -18,7 +18,7 @@ SRC = 	$(SRC_DIR)HumanA.cpp	\
 		$(SRC_DIR)Weapon.cpp	\
 		$(SRC_DIR)main.cpp
 
-OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+OBJ = $(SRC:$(SRC_DIR)%.cpp=$(OBJ_DIR)/%.o)
 
 all: $(NAME)
 
@@ -26,8 +26,8 @@ $(NAME): $(OBJ)
 	@ $(CC) $(FLAGS) $(OBJ) $(INCLUDES) -o $(NAME)
 	@printf "$(GREEN)Compilation succeded ! ✔️$(END)\n"
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	@mkdir -p $(OBJ_DIR)/sources
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+	@mkdir -p $(OBJ_DIR)
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:

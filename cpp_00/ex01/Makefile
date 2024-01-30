@@ -9,7 +9,7 @@ YELLOW		=	\e[93;5;226m
 END			=	\e[0m
 
 SRC_DIR = ./sources/
-OBJ_DIR = .obj
+OBJ_DIR = .obj/
 
 INCLUDES = -I ./includes
 
@@ -17,16 +17,16 @@ SRC = 	$(SRC_DIR)Contact.cpp	\
 		$(SRC_DIR)PhoneBook.cpp	\
 		$(SRC_DIR)main.cpp
 
-OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+OBJ = $(SRC:$(SRC_DIR)%.cpp=$(OBJ_DIR)%.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@ $(CC) $(FLAGS) $(OBJ) $(INCLUDES) -o $(NAME)
+	@$(CC) $(FLAGS) $(OBJ) $(INCLUDES) -o $(NAME)
 	@printf "$(GREEN)Compilation succeded ! ✔️$(END)\n"
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	@mkdir -p $(OBJ_DIR)/sources
+$(OBJ_DIR)%.o:$(SRC_DIR)%.cpp
+	@mkdir -p $(OBJ_DIR)
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
@@ -40,4 +40,5 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean re
+
 

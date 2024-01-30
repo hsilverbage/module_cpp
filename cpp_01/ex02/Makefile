@@ -14,7 +14,7 @@ INCLUDES = -I ./includes
 
 SRC = 	main.cpp
 
-OBJ = $(SRC:%.c=$(OBJ_DIR)/%.o)
+OBJ = $(SRC:%.cpp=$(OBJ_DIR)/%.o)
 
 all: $(NAME)
 
@@ -22,8 +22,8 @@ $(NAME): $(OBJ)
 	@ $(CC) $(FLAGS) $(OBJ) $(INCLUDES) -o $(NAME)
 	@printf "$(GREEN)Compilation succeded ! ✔️$(END)\n"
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	@mkdir -p $(OBJ_DIR)/sources
+$(OBJ_DIR)/%.o: %.cpp
+	@mkdir -p $(OBJ_DIR)
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
