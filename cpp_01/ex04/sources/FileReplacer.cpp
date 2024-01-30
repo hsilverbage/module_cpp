@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   FileReplacer.cpp                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hsilverb <hsilverb@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/30 13:51:45 by hsilverb          #+#    #+#             */
+/*   Updated: 2024/01/30 13:51:46 by hsilverb         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "FileReplacer.hpp"
 #include <string>
 
@@ -17,8 +29,8 @@ void	FileReplacer::replaceFile(std::string s1, std::string s2) const
 	std::ofstream		outfile;
 	std::string			line;
 
-	infile.open(this->_infile);
-	outfile.open(this->_outfile);
+	infile.open(this->_infile.c_str());
+	outfile.open(this->_outfile.c_str());
 
 	if (infile.is_open() && outfile.is_open())
 	{

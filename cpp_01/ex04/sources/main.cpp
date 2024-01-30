@@ -1,12 +1,15 @@
-// Create a program that takes three parameters in the following order: a filename and
-// two strings, s1 and s2.
-// It will open the file <filename> and copies its content into a new file
-// <filename>., replacing every occurrence of s1 with s2.
-// Using C file manipulation functions is forbidden and will be considered cheating. All
-// the member functions of the class std::string are allowed, except . Use them
-// wisely!
-// Of course, handle unexpected inputs and errors. You have to create and turn in your
-// own tests to ensure your program works as expected.
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hsilverb <hsilverb@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/30 13:23:51 by hsilverb          #+#    #+#             */
+/*   Updated: 2024/01/30 13:33:07 by hsilverb         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 #include "FileReplacer.hpp"
 
@@ -21,6 +24,6 @@ int	main (int argc, char **argv)
 	FileReplacer	fileReplacer(argv[1]);
 
 	fileReplacer.replaceFile(argv[2], argv[3]);
-	
+
 	return (0);
 }

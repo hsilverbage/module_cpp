@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   HumanA.cpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hsilverb <hsilverb@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/30 13:31:21 by hsilverb          #+#    #+#             */
+/*   Updated: 2024/01/30 13:31:22 by hsilverb         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "HumanA.hpp"
 
 HumanA::HumanA(std::string name, Weapon& weapon) : _name(name), _weapon(weapon)
