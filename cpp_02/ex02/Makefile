@@ -1,4 +1,4 @@
-NAME	= harlFilter
+NAME	= third_canon
 
 CC		= c++
 FLAGS	= -std=c++98 -Wall -Wextra -Werror
@@ -13,7 +13,7 @@ OBJ_DIR = .obj
 
 INCLUDES = -I ./includes
 
-SRC = 	$(SRC_DIR)Harl.cpp	\
+SRC = 	$(SRC_DIR)Fixed.cpp	\
 		$(SRC_DIR)main.cpp
 
 OBJ = $(SRC:$(SRC_DIR)%.cpp=$(OBJ_DIR)/%.o)
