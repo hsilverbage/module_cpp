@@ -6,14 +6,15 @@
 class	Fixed {
 
 	public :
+
 		Fixed();
+		Fixed(const Fixed &rhs);
 		~Fixed();
 
-		Fixed&	operator=(const Fixed &rhs); // A copy assignment operator overload.
-		Fixed	(const Fixed &rhs); // copy constructor
+		Fixed&	operator=(const Fixed &rhs);
 
-		int		getRawBits(void) const; //returns the raw value of the fixed-point value
-		void	setRawBits(int const raw); //sets the raw value of the fixed-point number.sets the raw value of the fixed-point number.
+		int		getRawBits(void) const;
+		void	setRawBits(int const raw);
 
 	private :
 

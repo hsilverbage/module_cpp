@@ -7,6 +7,7 @@
 class Fixed
 {
 	public:
+
 		Fixed();
 		Fixed(const int nb);
 		Fixed(const float nb);
@@ -20,6 +21,7 @@ class Fixed
 		int		toInt(void) const;
 
 	private:
+	
 		int					_fixedPoint;
 		static const int	_fractionalBits = 8;
 };

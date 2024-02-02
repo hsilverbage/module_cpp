@@ -7,11 +7,13 @@
 class Fixed
 {
 	public:
+
 		Fixed();
 		Fixed(const int nb);
 		Fixed(const float nb);
 		Fixed(const Fixed &rhs);
 		~Fixed();
+
 		bool			operator < (const Fixed &rhs);
 		bool			operator > (const Fixed &rhs);
 		bool			operator >= (const Fixed &rhs);
@@ -37,6 +39,7 @@ class Fixed
 		static Fixed	max(const Fixed &fixed1, const Fixed &fixed2);
 
 	private:
+	
 		int					_fixedPoint;
 		static const int	_fractionalBits = 8;
 };
