@@ -17,8 +17,8 @@ class	Fixed {
 
 	private :
 
-		int					_nb;
-		static const int	_nbBits = 8;
+		int					_fixedPoint;
+		static const int	_fractionalBits = 8;
 };
 
 #endif

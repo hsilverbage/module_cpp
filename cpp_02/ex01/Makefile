@@ -1,4 +1,4 @@
-NAME	= now_we_are_talking
+NAME	= second_canon
 
 CC		= c++
 FLAGS	= -std=c++98 -Wall -Wextra -Werror
