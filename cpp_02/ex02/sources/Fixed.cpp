@@ -161,7 +161,7 @@ Fixed	Fixed::min(Fixed &fixed1, Fixed &fixed2)
 	return (Fixed(fixed1));
 }
 
-Fixed	Fixed::max( const Fixed &fixed1, const Fixed &fixed2)
+Fixed	Fixed::max(const Fixed &fixed1, const Fixed &fixed2)
 {
 	if (fixed1.toFloat() >= fixed2.toFloat())
 		return (Fixed(fixed1));

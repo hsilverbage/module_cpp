@@ -25,9 +25,9 @@ class Fixed
 		Fixed			operator - (const Fixed &rhs);
 		Fixed			operator * (const Fixed &rhs);
 		Fixed			operator / (const Fixed &rhs);
-		Fixed			&operator ++ ();
-		Fixed			operator ++ (int);
-		Fixed			&operator -- ();
+		Fixed&			operator ++ ();
+		Fixed			operator ++ (int); // why is there just int as proto ?
+		Fixed&			operator -- ();
 		Fixed			operator -- (int);
 		int				getRawBits(void) const;
 		void			setRawBits(int const raw);
@@ -39,11 +39,11 @@ class Fixed
 		static Fixed	max(const Fixed &fixed1, const Fixed &fixed2);
 
 	private:
-	
+
 		int					_fixedPoint;
 		static const int	_fractionalBits = 8;
 };
 
-std::ostream	&operator << (std::ostream &os, const Fixed &rhs);
+std::ostream&	operator << (std::ostream &os, const Fixed &rhs);
 
 #endif
