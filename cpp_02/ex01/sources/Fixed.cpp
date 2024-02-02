@@ -5,11 +5,12 @@ Fixed::Fixed() : _fixedPoint(0)
 	std::cout << "Default constructor called" << std::endl;
 }
 
-Fixed::Fixed(const float value) : _fixedPoint(value * (1 << _fractionalBits))
+Fixed::Fixed(const float nb) : _fixedPoint(nb * (1 << _fractionalBits))
 {
 	std::cout << "Float constructor called" << std::endl;
 }
-Fixed::Fixed(const int value) : _fixedPoint(value << _fractionalBits)
+
+Fixed::Fixed(const int nb) : _fixedPoint(nb << _fractionalBits)
 {
 	std::cout << "Int constructor called" << std::endl;
 }
@@ -17,6 +18,11 @@ Fixed::Fixed(const int value) : _fixedPoint(value << _fractionalBits)
 Fixed::Fixed(const Fixed &rhs) : _fixedPoint(rhs.getRawBits())
 {
 	std::cout << "Copy constructor called" << std::endl;
+}
+
+Fixed::~Fixed()
+{
+	std::cout << "Destructor called" << std::endl;
 }
 
 Fixed	&Fixed::operator = (const Fixed &rhs)
@@ -31,11 +37,6 @@ std::ostream	&operator << (std::ostream &os, const Fixed &rhs)
 {
 	os << rhs.toFloat();
 	return (os);
-}
-
-Fixed::~Fixed()
-{
-	std::cout << "Destructor called" << std::endl;
 }
 
 void	Fixed::setRawBits(int const raw)

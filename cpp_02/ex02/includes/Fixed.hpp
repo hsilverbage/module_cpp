@@ -8,16 +8,16 @@ class Fixed
 {
 	public:
 		Fixed();
-		Fixed(const int value);
-		Fixed(const float value);
+		Fixed(const int nb);
+		Fixed(const float nb);
 		Fixed(const Fixed &rhs);
 		~Fixed();
-		int				operator < (const Fixed &rhs);
-		int				operator > (const Fixed &rhs);
-		int				operator >= (const Fixed &rhs);
-		int				operator <= (const Fixed &rhs);
-		int				operator == (const Fixed &rhs);
-		int				operator != (const Fixed &rhs);
+		bool				operator < (const Fixed &rhs);
+		bool				operator > (const Fixed &rhs);
+		bool				operator >= (const Fixed &rhs);
+		bool				operator <= (const Fixed &rhs);
+		bool				operator == (const Fixed &rhs);
+		bool				operator != (const Fixed &rhs);
 		Fixed			&operator = (const Fixed &rhs);
 		Fixed			operator + (const Fixed &rhs);
 		Fixed			operator - (const Fixed &rhs);
