@@ -4,6 +4,10 @@ Fixed::Fixed() : _nb(0)
 {
 	std::cout << "Default constructor called" << std::endl;
 }
+Fixed::Fixed(const int nb)
+{
+	
+}
 
 Fixed::~Fixed()
 {
