@@ -5,14 +5,13 @@ Fixed::Fixed() : _fixedPoint(0)
 	std::cout << "Default constructor called" << std::endl;
 }
 
-Fixed::Fixed(float value) //: _fixedPoint(value * (1 << _fractionalBits))
+Fixed::Fixed(const float value) : _fixedPoint(value * (1 << _fractionalBits))
 {
-	std::cout << "Copy constructor float called" << std::endl;
-	this->_fixedPoint = value * (1 << _fractionalBits);
+	std::cout << "Float constructor called" << std::endl;
 }
-Fixed::Fixed(int value) : _fixedPoint(value << _fractionalBits)
+Fixed::Fixed(const int value) : _fixedPoint(value << _fractionalBits)
 {
-	std::cout << "Copy constructor int called" << std::endl;
+	std::cout << "Int constructor called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed &rhs) : _fixedPoint(rhs.getRawBits())
