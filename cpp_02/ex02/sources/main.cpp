@@ -12,6 +12,7 @@ int	main(void)
 	std::cout << a << std::endl;
 	std::cout << a.getRawBits() << std::endl;
 	std::cout << a++ << std::endl;
+	std::cout << a.getRawBits() << std::endl;
 	std::cout << a << std::endl;
 	std::cout << b << std::endl;
 	std::cout << d << std::endl;
