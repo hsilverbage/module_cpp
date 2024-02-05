@@ -97,7 +97,7 @@ Fixed	&Fixed::operator ++ ()
 	return (*this);
 }
 
-Fixed	Fixed::operator ++ (int) // not sure about this one
+Fixed	Fixed::operator ++ (int)
 {
 	Fixed	tmp = *this;
 	++*this;
