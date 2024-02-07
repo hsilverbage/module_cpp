@@ -2,7 +2,7 @@
 
 ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0)
 {
-	std::cout << "ClapTrap " << this->_name << ": Default constructor called" << std::endl;
+	std::cout << "ClapTrap " << this->_name << " Default constructor called" << std::endl;
 }
 ClapTrap::ClapTrap() : _hitPoints(10), _energyPoints(10), _attackDamage(0)
 {
@@ -93,7 +93,7 @@ std::string	ClapTrap::getName() const
 
 std::ostream&	operator << (std::ostream &os, const ClapTrap &rhs)
 {
-	os << rhs.getName() << " has : " << rhs.getAttackPoints() << " attack dammage points, " << rhs.getEnergyPoints() << " energy points, " << rhs.getHitPoints() << " HP left" << std::endl;
+	os << rhs.getName() << " has : " << rhs.getAttackPoints() << " attack dammage points, " << rhs.getEnergyPoints() << " energy points, " << rhs.getHitPoints() << " HP left\n" << std::endl;
 	return (os);
 }
 

@@ -14,11 +14,15 @@ class DiamondTrap : public FlagTrap, public ScavTrap
 		DiamondTrap(const DiamondTrap &rhs);
 		DiamondTrap& operator=(const DiamondTrap &rhs);
 
-		void whoAmI();
+		void	whoAmI(void) const;
+
+		std::string	getName() const;
 
 	private :
 
 		std::string	_name;
 };
+
+std::ostream&	operator << (std::ostream &os, const DiamondTrap &rhs);
 
 #endif

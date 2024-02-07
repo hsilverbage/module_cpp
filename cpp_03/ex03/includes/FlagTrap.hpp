@@ -3,20 +3,14 @@
 
 #include "ClapTrap.hpp"
 
-class FlagTrap : public ClapTrap {
+class FlagTrap : virtual public ClapTrap {
 
 	public :
 
 		FlagTrap(std::string name);
 		~FlagTrap();
-		FlagTrap(const FlagTrap &rhs);
-		FlagTrap&	operator=(const FlagTrap &rhs);
 
 		void highFivesGuys(void);
-
-
-	private :
-
 };
 
 #endif

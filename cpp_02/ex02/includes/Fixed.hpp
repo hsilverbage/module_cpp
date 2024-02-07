@@ -26,7 +26,7 @@ class Fixed
 		Fixed			operator * (const Fixed &rhs);
 		Fixed			operator / (const Fixed &rhs);
 		Fixed&			operator ++ ();
-		Fixed			operator ++ (int); // why is there just int as proto ?
+		Fixed			operator ++ (int);
 		Fixed&			operator -- ();
 		Fixed			operator -- (int);
 		int				getRawBits(void) const;

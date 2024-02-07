@@ -2,11 +2,11 @@
 
 DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name), ScavTrap(name), FlagTrap(name)
 {
+	this->ClapTrap::_name = name  + "_clap_name";
 	this->_name = name;
-	this->ClapTrap::_name = name + "_clap_name";
-	this->_attackDamage = this->FlagTrap::_attackDamage;
-	this->_energyPoints = this->ScavTrap::_energyPoints;
-	this->_hitPoints = this->FlagTrap::_hitPoints;
+	this->FlagTrap::_attackDamage = 100;
+	this->ScavTrap::_energyPoints = 50;
+	this->FlagTrap::_hitPoints = 30;
 
 	std::cout << "DiamondTrap " << this->_name << " default constructor called" << std::endl;
 }
@@ -16,21 +16,19 @@ DiamondTrap::~DiamondTrap()
 	std::cout << "DiamondTrap " << this->_name << " default destructor called" << std::endl;
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap &rhs)
+void	DiamondTrap::whoAmI(void) const
 {
-	*this = rhs;
-	std::cout << "DiamondTrap " << this->_name << " copy constructor called" << std::endl;
+	std::cout << "DiamondTrap my name is " << this->_name << " and my ClapTrap name is " << this->ClapTrap::_name <<  std::endl;
 }
 
-// DiamondTrap&	DiamondTrap::operator=(const DiamondTrap &rhs)
-// {
-// 	if (*this != rhs)
-// 	{
-// 		this->_attackDamage = rhs._attackDamage;
-// 		this->_energyPoints = rhs._energyPoints;
-// 		this->_hitPoints = rhs._hitPoints;
-// 		this->ClapTrap::_name = rhs.ClapTrap::_name;
-// 		this->_name = rhs._name;
-// 	}
-// 	return (*this);
-// }
+std::string	DiamondTrap::getName(void) const
+{
+	return (this->_name);
+}
+
+std::ostream&	operator << (std::ostream &os, const DiamondTrap &rhs)
+{
+	os << rhs.getName() << " has " << rhs.getAttackPoints() << " attack dammage points, " << rhs.getEnergyPoints() << " energy points, " << rhs.getHitPoints() << " HP left\n" << std::endl;
+	return (os);
+}
+
