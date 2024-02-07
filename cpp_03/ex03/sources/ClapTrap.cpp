@@ -33,7 +33,7 @@ ClapTrap&	ClapTrap::operator=(const ClapTrap &rhs)
 	return (*this);
 }
 
-void	ClapTrap::attack(const std::string& target) //When ClapTrack attacks, it causes its target to lose <attack damage> hit points.
+void	ClapTrap::attack(const std::string& target)
 {
 	if (this->_hitPoints < 1)
 		return ;
