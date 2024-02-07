@@ -16,14 +16,28 @@ DiamondTrap::~DiamondTrap()
 	std::cout << "DiamondTrap " << this->_name << " default destructor called" << std::endl;
 }
 
+DiamondTrap::DiamondTrap(const DiamondTrap &rhs)
+{
+	*this = rhs;
+	std::cout << "copy constructor called" << std::endl;
+}
+DiamondTrap& 	DiamondTrap::operator=(const DiamondTrap &rhs)
+{
+	if (this != &rhs)
+	{
+		this->_name = rhs._name;
+		this->ClapTrap::_name = _name  + "_clap_name";
+		this->FlagTrap::_attackDamage = 100;
+		this->ScavTrap::_energyPoints = 50;
+		this->FlagTrap::_hitPoints = 30;
+	}
+	std::cout << "assigment copy operator called" << std::endl;
+	return (*this);
+}
+
 void	DiamondTrap::whoAmI(void) const
 {
 	std::cout << "DiamondTrap my name is " << this->_name << " and my ClapTrap name is " << this->ClapTrap::_name <<  std::endl;
-}
-
-std::string	DiamondTrap::getName(void) const
-{
-	return (this->_name);
 }
 
 std::ostream&	operator << (std::ostream &os, const DiamondTrap &rhs)
