@@ -1,4 +1,4 @@
-NAME	= first_canon
+NAME	= scav_trap
 
 CC		= c++
 FLAGS	= -std=c++98 -Wall -Wextra -Werror
@@ -13,7 +13,8 @@ OBJ_DIR = .obj
 
 INCLUDES = -I ./includes
 
-SRC = 	$(SRC_DIR)Fixed.cpp	\
+SRC = 	$(SRC_DIR)ClapTrap.cpp	\
+		$(SRC_DIR)ScavTrap.cpp	\
 		$(SRC_DIR)main.cpp
 
 OBJ = $(SRC:$(SRC_DIR)%.cpp=$(OBJ_DIR)/%.o)

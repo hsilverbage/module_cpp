@@ -1,4 +1,4 @@
-NAME	= flag_trap
+NAME	= diamond_trap
 
 CC		= c++
 FLAGS	= -std=c++98 -Wall -Wextra -Werror
@@ -13,9 +13,10 @@ OBJ_DIR = .obj
 
 INCLUDES = -I ./includes
 
-SRC = 	$(SRC_DIR)ClapTrap.cpp	\
-		$(SRC_DIR)ScavTrap.cpp	\
-		$(SRC_DIR)FlagTrap.cpp	\
+SRC = 	$(SRC_DIR)ClapTrap.cpp		\
+		$(SRC_DIR)ScavTrap.cpp		\
+		$(SRC_DIR)FlagTrap.cpp		\
+		$(SRC_DIR)DiamondTrap.cpp	\
 		$(SRC_DIR)main.cpp
 
 OBJ = $(SRC:$(SRC_DIR)%.cpp=$(OBJ_DIR)/%.o)

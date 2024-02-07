@@ -38,7 +38,7 @@ void	ClapTrap::attack(const std::string& target) //When ClapTrack attacks, it ca
 		std::cout << "ClapTrap " << this->_name << " has no energy to attack " << target << std::endl;
 		return ;
 	}
-	this->_energyPoints--;
+	this->_energyPoints --;
 	std::cout << "ClapTrap " << this->_name << " attacks " << target << ", causing " << this->_attackDamage << " points of damage!" << std::endl;
 }
 
@@ -54,7 +54,7 @@ void	ClapTrap::takeDamage(unsigned int amount)
 	std::cout << "ClapTrap " << this->_name << " lost " << amount << " hit points!" << std::endl;
 }
 
-void	ClapTrap::beRepaired(unsigned int amount) //When ClapTrap repairs itself, it gets <amount> hit points back.
+void	ClapTrap::beRepaired(unsigned int amount)
 {
 	if (this->_hitPoints < 1)
 		return ;
@@ -66,4 +66,29 @@ void	ClapTrap::beRepaired(unsigned int amount) //When ClapTrap repairs itself, i
 	std::cout << "ClapTrap " << this->_name << " has gained " << amount << " hit points!" << std::endl;
 	this->_energyPoints--;
 	this->_hitPoints += amount;
+}
+
+unsigned int	ClapTrap::getAttackPoints() const
+{
+	return (this->_attackDamage);
+}
+unsigned int	ClapTrap::getEnergyPoints() const
+{
+	return (this->_energyPoints);
+}
+
+unsigned int	ClapTrap::getHitPoints() const
+{
+	return (this->_hitPoints);
+}
+
+std::string	ClapTrap::getName() const
+{
+	return (this->_name);
+}
+
+std::ostream&	operator << (std::ostream &os, const ClapTrap &rhs)
+{
+	os << rhs.getName() << " has : " << rhs.getAttackPoints() << " attack dammage points, " << rhs.getEnergyPoints() << " energy points, " << rhs.getHitPoints() << " HP left\n" << std::endl;
+	return (os);
 }

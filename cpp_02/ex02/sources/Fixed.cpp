@@ -5,7 +5,7 @@ Fixed::Fixed() : _fixedPoint(0)
 
 }
 
-Fixed::Fixed(const float nb) : _fixedPoint(nb * (1 << _fractionalBits))
+Fixed::Fixed(const float nb) : _fixedPoint(nb * ( 1 << _fractionalBits))
 {
 
 }

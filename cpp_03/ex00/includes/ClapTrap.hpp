@@ -17,6 +17,11 @@ class ClapTrap {
 		void	takeDamage(unsigned int amount);
 		void	beRepaired(unsigned int amount);
 
+		unsigned int	getAttackPoints() const;
+		unsigned int	getEnergyPoints() const;
+		unsigned int	getHitPoints() const;
+		std::string		getName() const;
+
 	private :
 
 		std::string	_name;
@@ -25,5 +30,7 @@ class ClapTrap {
 		unsigned int	_attackDamage;
 
 };
+
+std::ostream&	operator << (std::ostream &os, const ClapTrap &rhs);
 
 #endif

@@ -1,13 +1,14 @@
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
+#include "FlagTrap.hpp"
 
 int	main (void)
 {
-	ScavTrap	Batman("Batman");
+	FlagTrap	Batman("Batman");
 	ClapTrap	Joker("Joker");
 
 	std::cout << std::endl;
-	Batman.guardGate();
+	Batman.highFivesGuys();
 	std::cout << std::endl;
 
 	std::cout << Joker;
@@ -26,7 +27,7 @@ int	main (void)
 	std::cout << Joker;
 	std::cout << std::endl;
 
-	ScavTrap	SpongeBob("SpongeBob");
+	FlagTrap	SpongeBob("SpongeBob");
 
 	std::cout << std::endl;
 	SpongeBob.attack("Batman");
