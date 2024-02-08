@@ -29,6 +29,8 @@ int	main (void)
 	{
 		DiamondTrap	test1("test1");
 		DiamondTrap	test2(test1);
+
+		test2.highFivesGuys();
 	}
 
 	return (0);

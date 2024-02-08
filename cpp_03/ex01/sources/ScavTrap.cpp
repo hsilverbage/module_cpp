@@ -13,12 +13,6 @@ ScavTrap::~ScavTrap()
 	std::cout << "ScavTrap " << this->_name << " default destructor called" << std::endl;
 }
 
-ScavTrap::ScavTrap(const ScavTrap &rhs)
-{
-	std::cout << "ScavTrap " << this->_name << " copy constructor called" << std::endl;
-	*this = rhs;
-}
-
 ScavTrap&	ScavTrap::operator=(const ScavTrap &rhs)
 {
 	std::cout << "ScavTrap" << this->_name << "  assignment copy operator called" << std::endl;
