@@ -22,7 +22,7 @@ Dog&	Dog::operator=(const Dog &rhs)
 	if (this != &rhs)
 	{
 		this->type = rhs.type;
-		this->Animal::type = rhs.getType();
+		this->_name = rhs._name;
 	}
 	return (*this);
 }

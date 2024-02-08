@@ -14,7 +14,7 @@ class Dog : public Animal {
 
 	private :
 
-	std::string	_name;
+		std::string	_name;
 };
 
 #endif

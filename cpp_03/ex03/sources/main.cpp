@@ -27,8 +27,8 @@ int	main (void)
 	}
 
 	{
-		DiamondTrap	test1("test1");
-		DiamondTrap	test2(test1);
+		DiamondTrap	Animal("Animal");
+		DiamondTrap	test2(Animal);
 
 		test2.highFivesGuys();
 	}

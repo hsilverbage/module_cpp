@@ -13,9 +13,11 @@ OBJ_DIR = .obj
 
 INCLUDES = -I ./includes
 
-SRC = 	$(SRC_DIR)Animal.cpp	\
-		$(SRC_DIR)Dog.cpp		\
-		$(SRC_DIR)Cat.cpp		\
+SRC = 	$(SRC_DIR)Animal.cpp		\
+		$(SRC_DIR)Dog.cpp			\
+		$(SRC_DIR)Cat.cpp			\
+		$(SRC_DIR)WrongCat.cpp		\
+		$(SRC_DIR)WrongAnimal.cpp	\
 		$(SRC_DIR)main.cpp
 
 OBJ = $(SRC:$(SRC_DIR)%.cpp=$(OBJ_DIR)/%.o)

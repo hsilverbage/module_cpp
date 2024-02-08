@@ -2,8 +2,6 @@
 #define ANIMAL_HPP
 
 #include "iostream"
-#include "Dog.hpp"
-#include "Cat.hpp"
 
 class	Animal {
 
@@ -14,8 +12,8 @@ class	Animal {
 		Animal(const Animal &rhs);
 		Animal&	operator=(const Animal &rhs);
 
-		void		makeSound();
-		std::string	getType();
+		void		makeSound() const;
+		std::string	getType() const;
 
 	protected :
 

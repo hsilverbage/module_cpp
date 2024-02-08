@@ -2,7 +2,7 @@
 
 int	main (void)
 {
-	Dog	test1;
+	Dog	Animal;
 
 	return (0);
 }

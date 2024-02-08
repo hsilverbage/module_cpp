@@ -23,7 +23,7 @@ Cat&	Cat::operator=(const Cat &rhs)
 	if (this != &rhs)
 	{
 		this->_name = rhs._name;
-		this->Animal::type = rhs.getType();
+		this->type = rhs.type;
 	}
 	return (*this);
 }

@@ -40,5 +40,5 @@ void	Animal::makeSound()
 	else if (this->type == "Cat")
 		std::cout << "MIAOUU" << std::endl;
 	else
-		std::cout << "The animal was not reconnized" << std::endl;
+		std::cout << "The Animal was not reconnized" << std::endl;
 }
