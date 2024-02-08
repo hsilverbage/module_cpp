@@ -28,17 +28,15 @@ Animal&	Animal::operator=(const Animal &rhs)
 	return (*this);
 }
 
-std::string	Animal::getType()
+std::string	Animal::getType() const
 {
 	return (this->type);
 }
 
-void	Animal::makeSound()
+void	Animal::makeSound()	const
 {
 	if (this->type == "Dog")
 		std::cout << "WOUAFFF" << std::endl;
 	else if (this->type == "Cat")
 		std::cout << "MIAOUU" << std::endl;
-	else
-		std::cout << "The Animal was not reconnized" << std::endl;
 }

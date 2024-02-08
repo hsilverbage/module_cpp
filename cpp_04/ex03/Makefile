@@ -1,4 +1,4 @@
-NAME	= clap_trap
+NAME	= interface
 
 CC		= c++
 FLAGS	= -std=c++98 -Wall -Wextra -Werror
@@ -8,12 +8,14 @@ GREEN		=	\e[92;5;118m
 YELLOW		=	\e[93;5;226m
 END			=	\e[0m
 
-SRC_DIR = ./sources/
+SRC_DIR = ./sources
 OBJ_DIR = .obj
 
 INCLUDES = -I ./includes
 
-SRC = 	$(SRC_DIR)ClapTrap.cpp	\
+SRC = 	$(SRC_DIR)AMateria.cpp	\
+		$(SRC_DIR)Ice.cpp		\
+		$(SRC_DIR)Cure.cpp		\
 		$(SRC_DIR)main.cpp
 
 OBJ = $(SRC:$(SRC_DIR)%.cpp=$(OBJ_DIR)/%.o)

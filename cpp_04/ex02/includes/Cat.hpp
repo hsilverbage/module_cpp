@@ -13,6 +13,8 @@ class Cat : public Animal {
 		Cat(const Cat &rhs);
 		Cat&	operator=(const Cat &rhs);
 
+		void makeSound() const override;
+
 	private :
 
 		std::string	_name;
