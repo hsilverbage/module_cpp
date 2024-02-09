@@ -7,13 +7,13 @@
 
 int	main (void)
 {
-	{
-		const Animal* j = new Dog();
-		const Animal* i = new Cat();
+	// {
+	// 	const Animal* j = new Dog();
+	// 	const Animal* i = new Cat();
 
-		delete j;
-		delete i;
-	}
+	// 	delete j;
+	// 	delete i;
+	// }
 	{
 		const Animal*	Gang[10];
 
@@ -28,13 +28,13 @@ int	main (void)
 		for (int i = 0; i < 11; i++)
 			delete	Gang[i];
 	}
-	{
-		Dog	Dog1;
-		Cat	Cat1;
+	// {
+	// 	Dog	Dog1;
+	// 	Cat	Cat1;
 
-		Dog1.makeSound();
-		Cat1.makeSound();
-	}
+	// 	Dog1.makeSound();
+	// 	Cat1.makeSound();
+	// }
 	// {
 	// 	Animal	Animal1;
 

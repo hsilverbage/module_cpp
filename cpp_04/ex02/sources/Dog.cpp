@@ -1,6 +1,6 @@
 #include "Dog.hpp"
 
-Dog::Dog() : _name("Dog")
+Dog::Dog()
 {
 	std::cout << "Dog default constructor called" <<std::endl;
 	this->Animal::type = "Dog";
@@ -24,7 +24,6 @@ Dog&	Dog::operator=(const Dog &rhs)
 	if (this != &rhs)
 	{
 		this->type = rhs.type;
-		this->_name = rhs._name;
 	}
 	return (*this);
 }
