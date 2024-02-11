@@ -13,7 +13,10 @@ class Cat : public Animal {
 		Cat(const Cat &rhs);
 		Cat&	operator=(const Cat &rhs);
 
-		void makeSound() const;
+		virtual void	makeSound() const;
+		void			setIdea(size_t index, std::string idea);
+		std::string		getIdea(size_t index) const;
+		void			showAllIdeas(void) const;
 
 	private :
 

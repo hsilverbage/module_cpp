@@ -3,7 +3,7 @@
 WrongCat::WrongCat() : _name("WrongCat")
 {
 	std::cout << "WrongCat default constructor called" << std::endl;
-	this->WrongAnimal::type = "WrongCat";
+	this->type = "WrongCat";
 }
 
 WrongCat::~WrongCat()
@@ -26,4 +26,9 @@ WrongCat&	WrongCat::operator=(const WrongCat &rhs)
 		this->type = rhs.type;
 	}
 	return (*this);
+}
+
+void	WrongCat::makeSound() const
+{
+	std::cout << "Wrong Cat goes MIAOUU" << std::endl;
 }

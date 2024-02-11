@@ -32,3 +32,21 @@ void	Dog::makeSound() const
 {
 	std::cout << "WOUAFF" << std::endl;
 }
+
+void	Dog::setIdea(size_t index, std::string idea)
+{
+	this->_Brain->setIdea(index, idea);
+}
+
+std::string	Dog::getIdea(size_t index) const
+{
+	return (this->_Brain->getIdea(index));
+}
+
+void	Dog::showAllIdeas(void) const
+{
+	for (size_t i = 0; i < 100; i++)
+	{
+		std::cout << this->_Brain->getIdea(i) << std::endl;
+	}
+}
