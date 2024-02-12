@@ -1,6 +1,6 @@
 #include "Cat.hpp"
 
-Cat::Cat()
+Cat::Cat() : _name("Cat")
 {
 	std::cout << "Cat default constructor called" << std::endl;
 	this->Animal::type = "Cat";
@@ -17,8 +17,8 @@ Cat::Cat(const Cat &rhs)
 {
 	std::cout << "Cat copy constructor called" << std::endl;
 	*this = rhs;
-	delete this->_brain;
-	this->_brain = new Brain(*rhs._brain);
+	delete this->_Brain;
+	this->_Brain = new Brain(*rhs._Brain);
 }
 
 Cat&	Cat::operator=(const Cat &rhs)
@@ -26,7 +26,9 @@ Cat&	Cat::operator=(const Cat &rhs)
 	std::cout << "Cat copy assigment operator called" << std::endl;
 	if (this != &rhs)
 	{
+		this->_name = rhs._name;
 		this->type = rhs.type;
+		this->_Brain = new Brain(*rhs._Brain);
 	}
 	return (*this);
 }

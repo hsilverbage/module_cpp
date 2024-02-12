@@ -20,12 +20,12 @@ Dog::Dog(const Dog &rhs)
 
 Dog&	Dog::operator=(const Dog &rhs)
 {
-	std::cout << "Animal copy assigment operator called" << std::endl;
+	std::cout << "Dog copy assigment operator called" << std::endl;
 	if (this != &rhs)
 	{
 		this->type = rhs.type;
 		this->_name = rhs._name;
-		this->_Brain = new Brain();
+		this->_Brain = new Brain(*rhs._Brain);
 	}
 	return (*this);
 }
@@ -33,4 +33,22 @@ Dog&	Dog::operator=(const Dog &rhs)
 void	Dog::makeSound()	const
 {
 	std::cout << "WOUUAAFF" << std::endl;
+}
+
+void	Dog::setIdea(size_t index, std::string idea)
+{
+	this->_Brain->setIdea(index, idea);
+}
+
+std::string	Dog::getIdea(size_t index) const
+{
+	return (this->_Brain->getIdea(index));
+}
+
+void	Dog::showAllIdeas(void) const
+{
+	for (size_t i = 0; i < 100; i++)
+	{
+		std::cout << this->_Brain->getIdea(i) << std::endl;
+	}
 }

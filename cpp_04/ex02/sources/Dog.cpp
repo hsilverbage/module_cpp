@@ -1,6 +1,6 @@
 #include "Dog.hpp"
 
-Dog::Dog()
+Dog::Dog() : _name("Dog")
 {
 	std::cout << "Dog default constructor called" <<std::endl;
 	this->Animal::type = "Dog";
@@ -20,17 +20,19 @@ Dog::Dog(const Dog &rhs)
 
 Dog&	Dog::operator=(const Dog &rhs)
 {
-	std::cout << "Animal copy assigment operator called" << std::endl;
+	std::cout << "Dog copy assigment operator called" << std::endl;
 	if (this != &rhs)
 	{
 		this->type = rhs.type;
+		this->_name = rhs._name;
+		this->_Brain = new Brain(*rhs._Brain);
 	}
 	return (*this);
 }
 
-void	Dog::makeSound() const
+void	Dog::makeSound()	const
 {
-	std::cout << "WOUAFF" << std::endl;
+	std::cout << "WOUUAAFF" << std::endl;
 }
 
 void	Dog::setIdea(size_t index, std::string idea)

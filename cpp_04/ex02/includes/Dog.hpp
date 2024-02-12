@@ -21,6 +21,7 @@ class Dog : public Animal {
 	private :
 
 		Brain*		_Brain;
+		std::string	_name;
 };
 
 #endif
