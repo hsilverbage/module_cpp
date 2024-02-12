@@ -26,6 +26,7 @@ Cat&	Cat::operator=(const Cat &rhs)
 	{
 		this->_name = rhs._name;
 		this->type = rhs.type;
+		this->_Brain = new Brain();
 	}
 	return (*this);
 }
