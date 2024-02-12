@@ -1,42 +1,41 @@
 #include "AMateria.hpp"
 
-AMateria::AMateria(const std::string& type) : type(type)
+AMateria::AMateria()
 {
-	std::cout << "AMateria default constructor called" << std::endl;
+
+}
+
+AMateria::AMateria(const std::string& type) : _type(type)
+{
+
 }
 
 AMateria::~AMateria()
 {
-	std::cout << "AMateria default destructor called" << std::endl;
+
 }
 
 AMateria::AMateria(const AMateria &rhs)
 {
-	std::cout << "AMateria default copy constructor called" << std::endl;
 	*this = rhs;
 }
 
 AMateria&	AMateria::operator=(const AMateria &rhs)
 {
-	std::cout << "AMateria copy assigment operator called" << std::endl;
-	if (this != &rhs)
-	{
-		this->type = rhs.type;
-	}
 	return (*this);
 }
 
-// const std::string&	getType() const //Returns the materia type
-// {
-// 	return (this->type);
-// }
+AMateria*	AMateria::clone() const
+{
+	return ((AMateria*)this);
+}
 
-// virtual AMateria*	clone() const
-// {
-// 	//blabla
-// }
+void		AMateria::use(ICharacter& target)
+{
+	std::cout << "AMateria " << this->_type << " used on " << target.getName() << std::endl;
+}
 
-// virtual void		use(ICharacter& target)
-// {
-// 	//blabla
-// }
+const std::string&	AMateria::getType() const
+{
+	return (this->_type);
+}

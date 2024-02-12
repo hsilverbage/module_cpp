@@ -14,11 +14,8 @@ class Cure : public AMateria
 		Cure(const Cure &rhs);
 		Cure&	operator=(const Cure &rhs);
 
-		virtual void	use(ICharacter& target);
-
-	private :
-
-		std::string	_type;
+		virtual void		use(ICharacter& target);
+		virtual AMateria*	clone() const;
 };
 
 
