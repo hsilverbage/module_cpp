@@ -20,6 +20,8 @@ int main()
 	me->equip(tmp);
 	tmp = src->createMateria("cure");
 	me->equip(tmp);
+	// me->unequip(1);
+	// me->equip(src->createMateria("ice"));
 
 	ICharacter* bob = new Character("bob");
 

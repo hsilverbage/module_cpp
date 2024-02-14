@@ -13,6 +13,11 @@ Character::~Character()
 		if (this->_items[i])
 			delete this->_items[i];
 	}
+	for (int i = 0; this->_itemsToDel[i]; i++)
+	{
+		if (this->_itemsToDel[i])
+			delete this->_itemsToDel[i];
+	}
 }
 
 Character::Character(const Character &rhs)
@@ -49,7 +54,9 @@ void Character::equip(AMateria* m)
 }
 void	Character::delEquip(int idx)
 {
-	delete this->_items[idx];
+	static int i = 0;
+
+	this->_items[idx] = this->_itemsToDel[i];
 }
 
 void Character::unequip(int idx)

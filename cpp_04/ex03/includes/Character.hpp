@@ -18,10 +18,11 @@ class Character : public ICharacter
 		void				unequip(int idx);
 		void				use(int idx, ICharacter& target);
 		void				delEquip(int idx);
-		
+
 	private:
 		AMateria*	_items[4];
 		std::string	_name;
+		AMateria*	_itemsToDel[];
 };
 
 #endif
