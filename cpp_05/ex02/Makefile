@@ -1,4 +1,4 @@
-NAME	= polymorphisme
+NAME	= AForms
 
 CC		= c++
 FLAGS	= -std=c++98 -Wall -Wextra -Werror
@@ -13,11 +13,11 @@ OBJ_DIR = .obj
 
 INCLUDES = -I ./includes
 
-SRC = 	$(SRC_DIR)Animal.cpp		\
-		$(SRC_DIR)Dog.cpp			\
-		$(SRC_DIR)Cat.cpp			\
-		$(SRC_DIR)WrongCat.cpp		\
-		$(SRC_DIR)WrongAnimal.cpp	\
+SRC = 	$(SRC_DIR)Bureaucrat.cpp				\
+		$(SRC_DIR)AForm.cpp						\
+		$(SRC_DIR)ShrubberyCreationForm.cpp	\
+		$(SRC_DIR)PresidentialPardonForm.cpp	\
+		$(SRC_DIR)RobotomyRequestForm.cpp		\
 		$(SRC_DIR)main.cpp
 
 OBJ = $(SRC:$(SRC_DIR)%.cpp=$(OBJ_DIR)/%.o)
