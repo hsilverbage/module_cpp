@@ -85,12 +85,19 @@ void	Bureaucrat::signAForm(AForm& src)
 
 void	Bureaucrat::executeForm(const AForm& form)
 {
-	if (form.execute(*this))
+	try
 	{
-		std::cout << this->_name << " executed " << form.getName() << std::endl;
+		if (form.execute(*this))
+		{
+			std::cout << this->_name << " executed " << form.getName() << std::endl;
+		}
+		else
+			std::cout << this->_name << " failed to execute " << form.getName() << std::endl;
 	}
-	else
-		std::cout << this->_name << " failed to execute " << form.getName() << std::endl;
+	catch (const AForm::FileNotFundException &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
 }
 
 std::ostream&	operator<<(std::ostream &os, const Bureaucrat &rhs)

@@ -51,6 +51,15 @@ class	AForm
 				}
 		};
 
+		class FileNotFundException : public std::exception
+		{
+			public :
+				virtual const char* what() const throw()
+				{
+					return ("Impossible to sign or execute because the form doesnt exist");
+				}
+		};
+
 	protected :
 
 		const std::string	_name;

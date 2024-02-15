@@ -75,12 +75,12 @@ void	Bureaucrat::decrementGrade()
 	}
 }
 
-void	Bureaucrat::signAForm(AForm& src)
+void	Bureaucrat::signForm(Form& src)
 {
 	if (!src.getSigned())
 		src.beSigned(*this);
 	else
-		std::cout << this->_name << " couldn't sign " << src.getName() << " because the AForm is already signed" << std::endl;
+		std::cout << this->_name << " couldn't sign " << src.getName() << " because the Form is already signed" << std::endl;
 }
 
 std::ostream&	operator<<(std::ostream &os, const Bureaucrat &rhs)
