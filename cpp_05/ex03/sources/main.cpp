@@ -18,7 +18,7 @@ int	main(void)
 		fry.executeForm(*form);
 		delete(form);
 	}
-	catch(const std::exception& e)
+	catch(const Inter::FileNotFundException &e)
 	{
 		std::cerr << e.what() << '\n';
 	}
