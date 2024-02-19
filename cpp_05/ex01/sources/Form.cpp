@@ -2,21 +2,10 @@
 
 Form::Form(const std::string name, unsigned int gradeToSign, unsigned int gradeToExec) : _gradeToSign(gradeToSign), _gradeToExec(gradeToExec), _signed(false), _name(name)
 {
-	try
-	{
-		if (_gradeToSign < 1 || _gradeToExec < 1)
-			throw Form::GradeTooHighException();
-		if (_gradeToSign > 150 || _gradeToExec > 150)
-			throw Form::GradeTooLowException();
-	}
-	catch (const GradeTooHighException &e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-	catch (const GradeTooLowException &e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
+	if (_gradeToSign < 1 || _gradeToExec < 1)
+		throw Form::GradeTooHighException();
+	if (_gradeToSign > 150 || _gradeToExec > 150)
+		throw Form::GradeTooLowException();
 }
 
 Form::~Form()
@@ -60,20 +49,12 @@ bool	Form::getSigned() const
 
 void	Form::beSigned(Bureaucrat &src)
 {
-	try
+	if (src.getGrade() <= this->getGradeToSign() && getSigned() == false)
 	{
-		if (src.getGrade() <= this->getGradeToSign())
-		{
-			std::cout << src.getName() << " signed " << this->_name << std::endl;
-			this->_signed = true;
-		}
-		else
-			throw GradeTooLowException();
+		std::cout << src.getName() << " signed " << this->_name << std::endl;
+		this->_signed = true;
 	}
-	catch (const Form::GradeTooLowException & e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
+
 }
 
 std::ostream&	operator<<(std::ostream& os, const Form &rhs)
@@ -84,4 +65,14 @@ std::ostream&	operator<<(std::ostream& os, const Form &rhs)
 	else
 		os << "The Form is not signed yet." << std::endl;
 	return (os);
+}
+
+const char*	Form::GradeTooLowException::what() const throw()
+{
+	return ("Grade too low");
+}
+
+const char*	Form::GradeTooHighException::what() const throw()
+{
+	return ("Grade too high");
 }

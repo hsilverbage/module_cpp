@@ -14,9 +14,6 @@ class	ShrubberyCreationForm : public AForm
 		ShrubberyCreationForm&	operator=(const ShrubberyCreationForm &rhs);
 
 		virtual bool	execute(Bureaucrat const & executor) const;
-
-	private :
-
 };
 
 #endif

@@ -27,9 +27,13 @@ Intern&	Intern::operator=(const Intern &rhs)
 	return (*this);
 }
 
+const char* Intern::FileNotFundException::what() const throw()
+{
+	return ("The Intern can't find the file name asked by the bureaucrat and gives up");
+}
+
 AForm*	Intern::makeForm(std::string name, std::string target)
 {
-	AForm* form = NULL;
 	int i;
 
 	for (i = 0; i < 3; i++)
@@ -40,24 +44,16 @@ AForm*	Intern::makeForm(std::string name, std::string target)
 			break;
 		}
 	}
-	std::cout << i << std::endl;
-	try
+	switch (i)
 	{
-		switch (i)
-		{
-			case 0 :
-				return (new ShrubberyCreationForm(target));
-			case 1 :
-				return (new RobotomyRequestForm(target));
-			case 2 :
-				return (new PresidentialPardonForm(target));
-			default :
-				throw Intern::FileNotFundException();
-		}
+		case 0 :
+			return (new ShrubberyCreationForm(target));
+		case 1 :
+			return (new RobotomyRequestForm(target));
+		case 2 :
+			return (new PresidentialPardonForm(target));
+		default :
+			throw Intern::FileNotFundException();
 	}
-	catch (const FileNotFundException &e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-	return (form);
+	return (NULL);
 }

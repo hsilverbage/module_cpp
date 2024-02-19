@@ -25,10 +25,7 @@ class	Intern
 		class	FileNotFundException : public std::exception
 		{
 			public :
-				virtual const char* what() const throw()
-				{
-					return ("The Intern can't find the file name asked by the bureaucrat and gives up");
-				}
+				virtual const char* what() const throw();
 		};
 
 	private :

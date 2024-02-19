@@ -2,29 +2,40 @@
 
 int	main(void)
 {
-	// {
-	// 	Bureaucrat	Bill("Bill", 0);
-	// 	Bureaucrat	Johnny("Johnny", 151);
-	// }
-	// {
-	// 	Bureaucrat	Tom("Tom", 1);
-	// 	Bureaucrat	Bob("Bob", 149);
+	try
+	{
+		Bureaucrat	Johnny("Johnny", 0);
+	}
+	catch (const std::exception &e)
+	{
+		std::cout << e.what() << "\n\n" << std::endl;
+	}
 
-	// 	std::cout << Tom;
-	// 	std::cout << Bob;
+	try
+	{
+		Bureaucrat	Tom("Tom", 1);
 
-	// 	Tom.incrementGrade();
+		std::cout << Tom;
 
-	// 	Bob.decrementGrade();
-	// 	std::cout << Bob;
-	// 	Bob.decrementGrade();
-	// }
-	// {
-	// 	Bureaucrat	Bill("Bill", 1);
-	// 	Bureaucrat	Johnny("Johnny", 150);
+		Tom.incrementGrade();
+	}
+	catch (const std::exception &e)
+	{
+		std::cout << e.what() << "\n\n" << std::endl;
+	}
 
-	// 	Johnny = Bill;
-	// 	std::cout << Johnny;
-	// }
+	try
+	{
+		Bureaucrat	Bob("Bob", 149);
+
+		std::cout << Bob;
+		Bob.decrementGrade();
+		std::cout << Bob;
+		Bob.decrementGrade();
+	}
+	catch (const std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 	return (0);
 }

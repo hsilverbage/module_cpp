@@ -20,44 +20,24 @@ class	AForm
 		const unsigned int	getGradeToExec() const;
 		bool				getSigned() const;
 		void				beSigned(Bureaucrat &src);
-		virtual	bool		execute(Bureaucrat const& executor) const = 0;
-		bool				checkIfExecutable(Bureaucrat const& executor) const;
+		virtual bool				execute(Bureaucrat const& executor) const = 0;
 
 		class	GradeTooHighException
 		{
 			public :
-				virtual const char* what() const throw()
-				{
-					return ("Grade too high");
-				}
-
+				virtual const char* what() const throw();
 		};
 
 		class	GradeTooLowException
 		{
 			public :
-				virtual const char* what() const throw()
-				{
-					return ("Grade too low");
-				}
+				virtual const char* what() const throw();
 		};
 
 		class NotSignedException : public std::exception
 		{
 			public :
-				virtual const char* what() const throw()
-				{
-					return ("Impossible to execute the form because its not signed yet");
-				}
-		};
-
-		class FileNotFundException : public std::exception
-		{
-			public :
-				virtual const char* what() const throw()
-				{
-					return ("Impossible to sign or execute because the form doesnt exist");
-				}
+				virtual const char* what() const throw();
 		};
 
 	protected :

@@ -13,9 +13,6 @@ class PresidentialPardonForm : public AForm
 		PresidentialPardonForm&	operator=(const PresidentialPardonForm &rhs);
 
 		virtual bool	execute(Bureaucrat const & executor) const;
-
-	private :
-
 };
 
 #endif

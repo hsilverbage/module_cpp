@@ -1,4 +1,4 @@
-NAME	= Forms
+NAME	= bureaucrats
 
 CC		= c++
 FLAGS	= -std=c++98 -Wall -Wextra -Werror
@@ -14,7 +14,6 @@ OBJ_DIR = .obj
 INCLUDES = -I ./includes
 
 SRC = 	$(SRC_DIR)Bureaucrat.cpp	\
-		$(SRC_DIR)Form.cpp			\
 		$(SRC_DIR)main.cpp
 
 OBJ = $(SRC:$(SRC_DIR)%.cpp=$(OBJ_DIR)/%.o)
