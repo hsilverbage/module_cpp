@@ -39,11 +39,12 @@ bool	ScalarConverter::parsing()
 			this->_type = INT;
 			return (true);
 		}
-		if (_arg[0] >= 32 && _arg[0] <= 126)
+		if (_arg[0] <= 127)
 		{
 			this->_type = CHAR;
 			return (true);
 		}
+		std::cout << "OK" << std::endl;
 		throw InvalidInput();
 	}
 	if (_arg == "-inff" || _arg == "+inff" || _arg == "-inf" || _arg == "+inf" || _arg == "nan")
@@ -98,18 +99,18 @@ void	ScalarConverter::convertToChar() const
 
 void	ScalarConverter::convertToInt() const
 {
-	if (this->_type == INT)
-	{
-		try
-		{
-			int nb = std::stoi(this->_arg);
-			std::cout << "Int : " << nb <<std::endl;
-		}
-		catch (const std::out_of_range &e)
-		{
-			std::cerr << "Int : impossible" << std::endl;
-		}
-	}
+	// if (this->_type == INT)
+	// {
+	// 	try
+	// 	{
+	// 		int nb = static_cast <int>(_arg); //std::stoi(this->_arg);
+	// 		std::cout << "Int : " << nb <<std::endl;
+	// 	}
+	// 	catch (const std::out_of_range &e)
+	// 	{
+	// 		std::cerr << "Int : impossible" << std::endl;
+	// 	}
+	// }
 	if (this->_type == SCIENCE)
 		std::cout << "Int : impossible" << std::endl;
 	if (this->_type == CHAR)

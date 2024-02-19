@@ -1,15 +1,20 @@
 #include "ScalarConverter.hpp"
-#include "Exceptions.hpp"
 
 int main (int argc, char **argv)
 {
+	if (argc != 2)
+	{
+		std::cerr << "Error : wrong number of argument" << std::endl;
+		return (-1);
+	}
+	std::string	arg = argv[1];
+	if (arg.empty())
+	{
+		std::cerr << "Error : the argument is empty" << std::endl;
+		return (-1);
+	}
 	try
 	{
-		if (argc != 2)
-			throw WrongNbArg();
-		std::string	arg = argv[1];
-		if (arg.empty())
-			throw EmptyArg();
 		ScalarConverter	Converter(arg);
 
 		Converter.parsing();
