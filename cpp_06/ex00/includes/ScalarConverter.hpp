@@ -2,6 +2,8 @@
 #define	SCALARCONVERTER_HPP
 
 #include <iostream>
+#include <string>
+#include <sstream>
 
 enum
 {
@@ -23,10 +25,12 @@ class ScalarConverter
 
 		bool	parsing();
 		int		getType() const;
-		void	convertToChar() const;
-		void	convertToInt() const;
-		void	convertToFloat() const;
-		void	convertToDouble() const;
+		std::string	getArg() const;
+		void	convertChar() const;
+		void	convertInt() const;
+		void	convertFloat() const;
+		void	convertDouble() const;
+		void	convertScience() const;
 		void	printResult() const;
 
 		class	InvalidInput : public std::exception
