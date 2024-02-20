@@ -206,7 +206,7 @@ void	ScalarConverter::convertScience() const
 
 }
 
-void	ScalarConverter::printResult() const
+void	ScalarConverter::convert() const
 {
 	switch (_type)
 	{

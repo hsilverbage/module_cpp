@@ -18,7 +18,7 @@ int main (int argc, char **argv)
 		ScalarConverter	Converter(arg);
 
 		Converter.parsing();
-		Converter.printResult();
+		Converter.convert();
 	}
 	catch (const std::exception &e)
 	{

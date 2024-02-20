@@ -31,7 +31,7 @@ class ScalarConverter
 		void	convertFloat() const;
 		void	convertDouble() const;
 		void	convertScience() const;
-		void	printResult() const;
+		void	convert() const;
 
 		class	InvalidInput : public std::exception
 		{
