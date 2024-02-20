@@ -26,11 +26,6 @@ class ScalarConverter
 		bool	parsing();
 		int		getType() const;
 		std::string	getArg() const;
-		void	convertChar() const;
-		void	convertInt() const;
-		void	convertFloat() const;
-		void	convertDouble() const;
-		void	convertScience() const;
 		void	convert() const;
 
 		class	InvalidInput : public std::exception
@@ -44,6 +39,12 @@ class ScalarConverter
 		int			_type;
 		std::string	_arg;
 		bool		_sign;
+
+		void	convertChar() const;
+		void	convertInt() const;
+		void	convertFloat() const;
+		void	convertDouble() const;
+		void	convertScience() const;
 };
 
 #endif

@@ -6,15 +6,15 @@
 
 int	main (void)
 {
-	{
-		Dog	Dog1;
-		Cat	Cat1;
-		Animal	Animal1;
+	// {
+	// 	Dog	Dog1;
+	// 	Cat	Cat1;
+	// 	Animal	Animal1;
 
-		Dog1.makeSound();
-		Cat1.makeSound();
-		Animal1.makeSound();
-	}
+	// 	Dog1.makeSound();
+	// 	Cat1.makeSound();
+	// 	Animal1.makeSound();
+	// }
 	// {
 	// 	WrongCat	Cat2;
 
