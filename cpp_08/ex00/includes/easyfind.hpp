@@ -3,16 +3,24 @@
 
 template <typename T>
 
-class	EasyFind
+void	easyfind(T container, int toFind)
 {
-	public :
+	for (int i = 0; i < T.end; i++)
+	{
+		if ()
+	}
+}
 
-		EasyFind<t>();
-		~EasyFind<T>();
+// class	EasyFind
+// {
+// 	public :
+
+// 		EasyFind();
+// 		~EasyFind();
 		
 
-	private :
+// 	private :
 
-};
+// };
 
 #endif
