@@ -19,7 +19,7 @@ class	Array
 		unsigned int	size() const;
 		T*				arr;
 
-		class OutOfRangeException : std::exception
+		class OutOfRangeException : public std::exception
 		{
 			public :
 				virtual const char* what() const throw()

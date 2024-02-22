@@ -40,10 +40,7 @@ template <typename T>
 T&	Array<T>::operator[](unsigned int i)
 {
 	if (i >= this->_size)
-	{
-		std::cout << "exception is getting caught but doesnt fucking catch it, bitch" << std::endl;
 		throw OutOfRangeException();
-	}
 	return (arr[i]);
 }
 
