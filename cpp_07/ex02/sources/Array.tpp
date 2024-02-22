@@ -18,20 +18,28 @@ template <typename T>
 Array<T>::Array(unsigned int n) : _size(n)
 {
 	arr = new T[n];
-	std::cout << "an array created with the size of" << n << std::endl;
 }
 template <typename T>
 
-Array<T>::Array(const Array<T> &rhs)
+Array<T>::Array(const Array<T> &rhs) : _size(rhs._size)
 {
-	*this = rhs;
+	arr = new T[_size];
+	for (int i = 0; i < _size; i++)
+		arr[i] = rhs.arr[i];
 }
+
 template <typename T>
 
 Array<T>&	Array<T>::operator=(const Array<T> &rhs)
 {
-	if (*this != &rhs)
+	if (this != &rhs)
+	{
 		this->_size = rhs._size;
+		delete [] arr;
+		arr = new T[_size];
+		for (int i = 0; i < _size; i++)
+			arr[i] = rhs.arr[i];
+	}
 	return (*this);
 }
 

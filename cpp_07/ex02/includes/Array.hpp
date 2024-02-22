@@ -30,7 +30,7 @@ class	Array
 
 	private :
 
-		const unsigned int	_size;
+		unsigned int	_size;
 };
 
 #include "../sources/Array.tpp"
