@@ -1,26 +1,30 @@
 #ifndef	EASYFIND_HPP
 #define	EASYFIND_HPP
 
+#include <algorithm>
+
+class	NotFoundException : public std::exception
+{
+	public :
+		const char* what() const throw()
+		{
+			return ("Number not found");
+		}
+};
+
+
 template <typename T>
 
-void	easyfind(T container, int toFind)
+typename T::iterator	easyfind(T container, int toFind)
 {
-	for (int i = 0; i < T.end; i++)
-	{
-		if ()
-	}
+	typename T::iterator 	it= container.begin();
+	typename T::iterator	itEnd = container.end();
+
+	it = std::find(it, itEnd, toFind);
+	if (it == itEnd)
+		throw NotFoundException();
+	return (it);
 }
 
-// class	EasyFind
-// {
-// 	public :
-
-// 		EasyFind();
-// 		~EasyFind();
-		
-
-// 	private :
-
-// };
 
 #endif
