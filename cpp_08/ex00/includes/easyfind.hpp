@@ -26,5 +26,4 @@ typename T::iterator	easyfind(T container, int toFind)
 	return (it);
 }
 
-
 #endif
