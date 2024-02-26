@@ -25,50 +25,53 @@ BitcoinExchange&	BitcoinExchange::operator=(const BitcoinExchange &rhs)
 }
 
 
-bool	BitcoinExchange::parse_input(std::ifstream& input)
+bool	BitcoinExchange::parse_line(std::string line)
 {
-	std::string	line;
 	std::string	date;
-	// long		value;
-
-	while (std::getline(input, line))
+	if (line.length() < 14 || line.at(4) != '-' || line.at(7) != '-')
 	{
-		if (line.find('|') == std::string::npos)
+		std::cerr << DATE_ERR << "\t" << line << std::endl;
+		return (false);
+	}
+	for (int i = 0; i < 10; i++)
+	{
+		if (i == 4 || i == 7)
+			i++;
+		if (!isdigit(line.at(i)))
 		{
-			std::cerr << "Error : missing the pipe separator" << std::endl;
-			break;
-		}
-		for (unsigned long i = 0; i < line.find('|'); i++)
-		{
-			if (isdigit(line.at(i)))
-			{
-				date = line.substr(i, 10);
-				break;
-			}
-			else if (line.at(i) != ' ' || line.at(i) != '\t')
-			{
-				std::cout << "Error 1: wrong date format -> YYYY-MM-DD" << std::endl;
-				return (false);
-			}
-		}
-		if (date.at(4) != '-' || date.at(7) != '-')
-		{
-			std::cerr << "Error 2 : wrong date format -> YYYY-MM-DD" << std::endl;
+			std::cerr << DATE_ERR <<std::endl;
 			return (false);
 		}
-		for (unsigned long i = 0; i < date.size(); i++)
-		{
-			if (i == 4 || i == 7)
-				i++;
-			if (!isdigit(date.at(i)))
-			{
-				std::cerr << "Error 3 : wrong date format -> YYYY-MM-DD" << date.size() << std::endl;
-				return (false);
-			}	
-		}
-		// _inputContainer[date] = value;
-		std::cout << line << "\t\t date : " << date << std::endl;
 	}
+	if (line.at(10) != ' ' || line.at(11) != '|' || line.at(12) != ' ')
+	{
+		std::cerr << DATE_ERR << std::endl;
+	}
+	for (unsigned long i = 13; i < line.length(); i++)
+	{
+		if (!isdigit(line.at(i)))
+		{
+			std::cerr << VALUE_ERR << std::endl;
+			return (false);
+		}
+	}
+	date = line.substr(0, 10);
+
+	long	value;
+
+	std::stringstream ss(line.substr(13, line.length()));
+	long longValue;
+	ss >> longValue;
+	ss.str();
+
+	if(ss.fail())
+	{
+		std::cerr << DATE_ERR << std::endl;
+		return (false);
+	}
+	value = longValue;
+	std::cout << date << std::endl;
+
 	return (true);
 }
 
@@ -76,12 +79,14 @@ void	BitcoinExchange::exchange()
 {
 	std::ifstream	data("data.csv");
 	std::ifstream	input(this->_input.c_str());
+	std::string		line;
 
 	if (!data.is_open() || !input.is_open())
 		throw OpenException();
-	parse_input(input);
-
-
+	while (std::getline(input, line))
+	{
+		parse_line(line); // if true than implement map and print the correct line
+	}
 	data.close();
 	input.close();
 }

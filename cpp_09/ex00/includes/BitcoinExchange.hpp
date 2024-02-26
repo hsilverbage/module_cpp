@@ -6,6 +6,10 @@
 #include <string>
 #include <map>
 #include <cctype>
+#include <sstream>
+
+#define DATE_ERR "Error : wrong date format -> \"YYYY-MM-DD | <value>\""
+#define	VALUE_ERR "Error : wrong rate exchange, valid value must be either a float or a positive integer, between 0 and 1000 -> \"YYYY-MM-DD | <value>\""
 
 class BitcoinExchange
 {
@@ -17,7 +21,7 @@ class BitcoinExchange
 		BitcoinExchange&	operator=(const BitcoinExchange &rhs);
 
 		void	exchange();
-		bool	parse_input(std::ifstream& input);
+		bool	parse_line(std::string line);
 
 		class	OpenException : public std::exception
 		{
