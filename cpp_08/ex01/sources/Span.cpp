@@ -1,8 +1,8 @@
 #include "Span.hpp"
 
-Span::Span(unsigned int n) : _n(n)
+Span::Span(unsigned int n) : _n(n), _nbElements(0)
 {
-	// _array.reserve(_n);
+
 }
 
 Span::~Span()
@@ -21,20 +21,22 @@ Span&	Span::operator=(const Span &rhs)
 	{
 		this->_n = rhs._n;
 		this->_array = rhs._array;
+		this->_nbElements = rhs._nbElements;
 	}
 	return (*this);
 }
 
 void	Span::addNumber(int nb)
 {
-	if (_array.size() >= _n)
+	if (_nbElements >= _n)
 		throw TooManyElem();
 	_array.push_back(nb);
+	_nbElements++;
 }
 
 unsigned int	Span::shortestSpan() const
 {
-	if (_array.size() < 2)
+	if (_nbElements < 2)
 		throw LessThanTwoElem();
 
 	unsigned int		shortest;
@@ -54,7 +56,7 @@ unsigned int	Span::shortestSpan() const
 
 unsigned int	Span::longestSpan() const
 {
-	if (_array.size() < 2)
+	if (_nbElements < 2)
 		throw LessThanTwoElem();
 	unsigned int	longest = 0;
 	std::vector<int>::const_iterator smallest = std::min_element(_array.begin(), _array.end());
@@ -65,7 +67,7 @@ unsigned int	Span::longestSpan() const
 
 const int&	Span::getNumber(unsigned int i) const
 {
-	if (i > _array.size())
+	if (i > _nbElements)
 		throw TooManyElem();
 	return (_array.at(i));
 }
@@ -82,11 +84,11 @@ const char*	Span::TooManyElem::what() const throw()
 
 void	Span::addRange(std::vector<int>::iterator start, std::vector<int>::iterator end)
 {
-	// for (size = 0; it_temp != end; size++)
-	// 	it_temp++;
-	// std::cout << size << std::endl;
-	// // if ((size + _array.size()) > _n)
-	// // 	throw TooManyElem();
-	for (std::vector<int>::iterator	it_temp = start; start != end; it_temp++)
+	for (std::vector<int>::iterator	it_temp = start; it_temp != end; it_temp++)
 		addNumber(*it_temp);
+}
+
+unsigned int	Span::getNbElem()
+{
+	return (this->_nbElements);
 }

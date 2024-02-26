@@ -18,6 +18,7 @@ class Span
 		unsigned int	shortestSpan() const;
 		unsigned int	longestSpan() const;
 		const int&		getNumber(unsigned int i) const;
+		unsigned int	getNbElem();
 
 		void			addRange(std::vector<int>::iterator start, std::vector<int>::iterator end);
 
@@ -35,7 +36,9 @@ class Span
 
 	private :
 
+		Span() {};
 		unsigned int		_n;
+		unsigned int		_nbElements;
 		std::vector<int>	_array;
 
 };

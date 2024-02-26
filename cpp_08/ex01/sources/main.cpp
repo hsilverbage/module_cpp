@@ -2,6 +2,7 @@
 
 int main(void)
 {
+	std::cout << "\n\t\tTEST 1 :\n" << std::endl;
 	try
 	{
 		Span	test(6);
@@ -13,7 +14,7 @@ int main(void)
 		test.addNumber(400);
 		test.addNumber(500);
 
-		for (int i = 0; i < 6; i++)
+		for (unsigned int i = 0; i < test.getNbElem(); i++)
 			std::cout << test.getNumber(i) << " ";
 		std::cout << std::endl;
 		std::cout << "Longest distance -> " << test.longestSpan() << std::endl;
@@ -23,28 +24,31 @@ int main(void)
 	{
 		std::cerr << "Error : " << e.what() << '\n';
 	}
-	// try
-	// {
-	// 	Span	test2(10);
-	// 	std::vector<int>	vector_to_add;
+	std::cout << "\n\t\tTEST 2 :\n" << std::endl;
+	try
+	{
+		Span	test2(15000);
+		std::vector<int>	vector_to_add;
 
-	// 	vector_to_add.push_back(42);
-	// 	vector_to_add.push_back(-42);
-	// 	vector_to_add.push_back(25);
-	// 	vector_to_add.push_back(13);
-	// 	vector_to_add.push_back(2);
-	// 	test2.addRange(vector_to_add.begin(), vector_to_add.end());
+		test2.addNumber(123);
+		test2.addNumber(321);
 
-	// 	for (int i = 0; i < 8; i++)
-	// 		std::cout << test2.getNumber(i) << " ";
-	// 	std::cout << std::endl;
-	// 	std::cout << "Longest distance -> " << test2.longestSpan() << std::endl;
-	// 	std::cout << "Shortest2 distance -> " << test2.shortestSpan() << std::endl;
-	// }
-	// catch(const std::exception& e)
-	// {
-	// 	std::cerr << "Error : " << e.what() << '\n';
-	// }
+		for (unsigned int i = 0; i < 10000; i++)
+			vector_to_add.push_back(i * 50);
+
+		test2.addRange(vector_to_add.begin(), vector_to_add.end());
+
+		for (unsigned int i = 0; i < test2.getNbElem(); i++)
+			std::cout << test2.getNumber(i) << " ";
+		std::cout << std::endl;
+
+		std::cout << "Longest distance -> " << test2.longestSpan() << std::endl;
+		std::cout << "Shortest2 distance -> " << test2.shortestSpan() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << "Error : " << e.what() << '\n';
+	}
 
 	return (0);
 }

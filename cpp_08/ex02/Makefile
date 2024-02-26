@@ -1,4 +1,4 @@
-NAME	= swap
+NAME	= mutant
 
 CC		= c++
 FLAGS	= -std=c++98 -Wall -Wextra -Werror
@@ -25,7 +25,7 @@ $(NAME): $(OBJ)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 	@mkdir -p $(OBJ_DIR)
-	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+	@$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
 	@$(RM) $(OBJ_DIR)
