@@ -27,22 +27,21 @@ MutantStack<T>&	MutantStack<T>::operator=(const MutantStack<T> &rhs)
 {
 	if (this != &rhs)
 	{
-		
+		std::stack<T>::operator=(rhs);
 	}
 	return (*this);
 }
 
+template <typename T>
 
-// template T::iterator	MutantStack<T>::begin()
-// {
-
-// 	return ()
-// }
+typename  std::stack<T>::container_type::iterator	MutantStack<T>::end()
+{
+	return (std::stack<T>::c.end());
+}
 
 template <typename T>
 
-T*	MutantStack<T>::end()
+typename  std::stack<T>::container_type::iterator	MutantStack<T>::begin()
 {
-	std::cout << "test" << std::endl;
-	return (MutantStack<T>.top());
+	return (std::stack<T>::c.begin());
 }
