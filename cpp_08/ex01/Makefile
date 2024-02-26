@@ -1,4 +1,4 @@
-NAME	= swap
+NAME	= span
 
 CC		= c++
 FLAGS	= -std=c++98 -Wall -Wextra -Werror
@@ -13,7 +13,8 @@ OBJ_DIR = .obj
 
 INCLUDES = -I ./includes
 
-SRC =	$(SRC_DIR)main.cpp
+SRC =	$(SRC_DIR)main.cpp		\
+		$(SRC_DIR)Span.cpp
 
 OBJ = $(SRC:$(SRC_DIR)%.cpp=$(OBJ_DIR)/%.o)
 
@@ -25,7 +26,7 @@ $(NAME): $(OBJ)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 	@mkdir -p $(OBJ_DIR)
-	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+	@$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
 	@$(RM) $(OBJ_DIR)
