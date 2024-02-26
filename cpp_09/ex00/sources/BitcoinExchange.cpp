@@ -47,11 +47,15 @@ bool	BitcoinExchange::parse_line(std::string line)
 	{
 		std::cerr << DATE_ERR << std::endl;
 	}
-	for (unsigned long i = 13; i < line.length(); i++)
+	
+	bool	isFloat = false;
+
+	for (unsigned long i = 13; i < line.length(); i++) // need to check if float and make a bool for it 
 	{
+		std::cout << "LINE AT = " << line.at(i) << std::endl;
 		if (!isdigit(line.at(i)))
 		{
-			std::cerr << VALUE_ERR << std::endl;
+			std::cerr << "ERROR" << VALUE_ERR << std::endl;
 			return (false);
 		}
 	}
