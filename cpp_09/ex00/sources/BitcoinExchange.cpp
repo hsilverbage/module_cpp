@@ -18,10 +18,7 @@ BitcoinExchange::BitcoinExchange(const BitcoinExchange &rhs)
 BitcoinExchange&	BitcoinExchange::operator=(const BitcoinExchange &rhs)
 {
 	if (this != &rhs)
-	{
-		this->_inputContainer = rhs._inputContainer;
 		this->_dataContainer = rhs._dataContainer;
-	}
 	return (*this);
 }
 
@@ -48,18 +45,18 @@ bool	BitcoinExchange::parse_input(std::string line)
 	{
 		std::cerr << DATE_ERR << std::endl;
 	}
-	_isFloat = false;
+	bool isFloat = false;
 	for (unsigned long i = 13; i < line.length(); i++)
 	{
 		if (line.at(i) == '.')
 		{
 			i++;
-			if (i == line.length() || _isFloat == true || i == 14 )
+			if (i == line.length() || isFloat == true || i == 14 )
 			{
 				std::cerr << VALUE_ERR << std::endl;
 				return (false);
 			}
-			_isFloat = true;
+			isFloat = true;
 		}
 		if (!isdigit(line.at(i)) )
 		{
@@ -85,12 +82,17 @@ bool	BitcoinExchange::parse_input(std::string line)
 	return (true);
 }
 
-void	BitcoinExchange::print_result(std::string date, float value)
+void	BitcoinExchange::print_result(std::string date, float value) // if find nest pas a pafait je diminue la date de un jour jusqua ce que ca soit le cas
 {
-	std::map<std::string, float>::iterator it = _inputContainer.begin();
-
-	std::cout << it->first << " | " << it->second << std::endl;
-	std::cout << date << " | " << value << std::endl;
+	std::map<std::string, float>::iterator it = _dataContainer.lower_bound(date);
+	// std::map<std::string, float>::iterator ite = _dataContainer.end();
+	// while (it != ite)
+	// {
+	// 	std::cout << it->first << "," << it->second << std::endl;
+	// 	it++;
+	// }
+	std::cout << date << " " << value << std::endl;
+	std::cout << it->first << " " << it->second << "\n"<< std::endl;
 }
 
 void	BitcoinExchange::fill_data_container()
@@ -108,13 +110,6 @@ void	BitcoinExchange::fill_data_container()
 
 		_dataContainer[line.substr(0, 10)] = value;
 	}
-	// std::map<std::string, float>::iterator it = _dataContainer.begin();
-	// std::map<std::string, float>::iterator ite = _dataContainer.end();
-	// while (it != ite)
-	// {
-	// 	std::cout << it->first << "," << it->second << std::endl;
-	// 	it++;
-	// }
 	data.close();
 }
 

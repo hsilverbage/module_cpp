@@ -33,9 +33,7 @@ class BitcoinExchange
 	private:
 
 		const std::string				_input;
-		std::map<std::string, float>	_inputContainer;
 		std::map<std::string, float>	_dataContainer;
-		bool							_isFloat;
 };
 
 #endif
