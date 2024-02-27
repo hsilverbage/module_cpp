@@ -20,7 +20,7 @@ class	Intern
 		Intern(const Intern& rhs);
 		Intern& operator=(const Intern& rhs);
 
-		AForm*	makeForm(std::string name, std::string target);
+		AForm&	makeForm(std::string name, std::string target);
 
 		class	FileNotFundException : public std::exception
 		{

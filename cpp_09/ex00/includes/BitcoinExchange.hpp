@@ -21,7 +21,9 @@ class BitcoinExchange
 		BitcoinExchange&	operator=(const BitcoinExchange &rhs);
 
 		void	exchange();
-		bool	parse_line(std::string line);
+		bool	parse_input(std::string line);
+		void	print_result(std::string date, float value);
+		void	fill_data_container();
 
 		class	OpenException : public std::exception
 		{
@@ -30,9 +32,10 @@ class BitcoinExchange
 
 	private:
 
-		const std::string			_input;
-		std::map<std::string, int>	_inputContainer;
-		std::map<std::string, int>	_dataContainer;
+		const std::string				_input;
+		std::map<std::string, float>	_inputContainer;
+		std::map<std::string, float>	_dataContainer;
+		bool							_isFloat;
 };
 
 #endif

@@ -19,13 +19,14 @@ BitcoinExchange&	BitcoinExchange::operator=(const BitcoinExchange &rhs)
 {
 	if (this != &rhs)
 	{
-	
+		this->_inputContainer = rhs._inputContainer;
+		this->_dataContainer = rhs._dataContainer;
 	}
 	return (*this);
 }
 
 
-bool	BitcoinExchange::parse_line(std::string line)
+bool	BitcoinExchange::parse_input(std::string line)
 {
 	std::string	date;
 	if (line.length() < 14 || line.at(4) != '-' || line.at(7) != '-')
@@ -47,51 +48,87 @@ bool	BitcoinExchange::parse_line(std::string line)
 	{
 		std::cerr << DATE_ERR << std::endl;
 	}
-	
-	bool	isFloat = false;
-
-	for (unsigned long i = 13; i < line.length(); i++) // need to check if float and make a bool for it 
+	_isFloat = false;
+	for (unsigned long i = 13; i < line.length(); i++)
 	{
-		std::cout << "LINE AT = " << line.at(i) << std::endl;
-		if (!isdigit(line.at(i)))
+		if (line.at(i) == '.')
 		{
-			std::cerr << "ERROR" << VALUE_ERR << std::endl;
+			i++;
+			if (i == line.length() || _isFloat == true || i == 14 )
+			{
+				std::cerr << VALUE_ERR << std::endl;
+				return (false);
+			}
+			_isFloat = true;
+		}
+		if (!isdigit(line.at(i)) )
+		{
+			std::cerr << VALUE_ERR << std::endl;
 			return (false);
 		}
 	}
-	date = line.substr(0, 10);
-
 	long	value;
-
 	std::stringstream ss(line.substr(13, line.length()));
-	long longValue;
-	ss >> longValue;
+	ss >> value;
 	ss.str();
-
 	if(ss.fail())
 	{
-		std::cerr << DATE_ERR << std::endl;
+		std::cerr << VALUE_ERR << std::endl;
 		return (false);
 	}
-	value = longValue;
-	std::cout << date << std::endl;
-
+	if (value < 0 || value > 1000)
+	{
+		std::cerr << VALUE_ERR << std::endl;
+		return (false);
+	}
+	print_result(line.substr(0, 10), static_cast<float>(value));
 	return (true);
+}
+
+void	BitcoinExchange::print_result(std::string date, float value)
+{
+	std::map<std::string, float>::iterator it = _inputContainer.begin();
+
+	std::cout << it->first << " | " << it->second << std::endl;
+	std::cout << date << " | " << value << std::endl;
+}
+
+void	BitcoinExchange::fill_data_container()
+{
+	std::ifstream	data("data.csv");
+	std::string	line;
+
+	if (!data.is_open())
+		throw OpenException();
+	while (std::getline(data, line))
+	{
+		std::stringstream ss(line.substr(11, line.length()));
+		float value;
+		ss >> value;
+
+		_dataContainer[line.substr(0, 10)] = value;
+	}
+	// std::map<std::string, float>::iterator it = _dataContainer.begin();
+	// std::map<std::string, float>::iterator ite = _dataContainer.end();
+	// while (it != ite)
+	// {
+	// 	std::cout << it->first << "," << it->second << std::endl;
+	// 	it++;
+	// }
+	data.close();
 }
 
 void	BitcoinExchange::exchange()
 {
-	std::ifstream	data("data.csv");
+	fill_data_container();
+
 	std::ifstream	input(this->_input.c_str());
 	std::string		line;
 
-	if (!data.is_open() || !input.is_open())
+	if (!input.is_open())
 		throw OpenException();
 	while (std::getline(input, line))
-	{
-		parse_line(line); // if true than implement map and print the correct line
-	}
-	data.close();
+		parse_input(line);
 	input.close();
 }
 
