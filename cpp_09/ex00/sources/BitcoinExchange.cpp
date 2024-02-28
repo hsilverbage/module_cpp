@@ -64,7 +64,7 @@ bool	BitcoinExchange::parse_input(std::string line)
 			return (false);
 		}
 	}
-	long	value;
+	float	value;
 	std::stringstream ss(line.substr(13, line.length()));
 	ss >> value;
 	ss.str();
@@ -134,7 +134,8 @@ void	BitcoinExchange::print_result(std::string date, float value)
 
 	if (date.compare(it->first) != 0 && it != _dataContainer.begin())
 		it--;
-	std::cout << std::fixed << std::setprecision(2) << date << " => " << value << " = " << (it->second * value) << std ::endl;
+	float result = (it->second * value);
+	std::cout << std::fixed << std::setprecision(value == static_cast<int>(value) ? 0 : 2) << date << " => " << value << " = " << std::setprecision(result == static_cast<int>(result) ? 0 : 2) << result << std ::endl;
 }
 
 void	BitcoinExchange::fill_data_container()
