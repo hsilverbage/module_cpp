@@ -7,6 +7,7 @@
 #include <map>
 #include <cctype>
 #include <sstream>
+#include <iomanip>
 
 #define DATE_ERR "Error : wrong date format -> \"YYYY-MM-DD | <value>\""
 #define	VALUE_ERR "Error : wrong rate exchange, valid value must be either a float or a positive integer, between 0 and 1000 -> \"YYYY-MM-DD | <value>\""
@@ -24,6 +25,7 @@ class BitcoinExchange
 		bool	parse_input(std::string line);
 		void	print_result(std::string date, float value);
 		void	fill_data_container();
+		bool	parse_date(std::string date);
 
 		class	OpenException : public std::exception
 		{

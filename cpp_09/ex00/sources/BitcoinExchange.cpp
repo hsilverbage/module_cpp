@@ -78,21 +78,63 @@ bool	BitcoinExchange::parse_input(std::string line)
 		std::cerr << VALUE_ERR << std::endl;
 		return (false);
 	}
+	if (!parse_date(line.substr(0, 10)))
+		return (false);
 	print_result(line.substr(0, 10), static_cast<float>(value));
 	return (true);
 }
 
-void	BitcoinExchange::print_result(std::string date, float value) // if find nest pas a pafait je diminue la date de un jour jusqua ce que ca soit le cas
+bool	BitcoinExchange::parse_date(std::string date)
+{
+	std::stringstream	ss(date);
+	int	year, month, day;
+	char	sep;
+
+	ss >> year >> sep >> month >> sep >> day;
+	ss.str();
+	if(ss.fail())
+	{
+		std::cerr << DATE_ERR << std::endl;
+		return (false);
+	}
+	if (year < 2009 || year > 2022 || (year == 2022 && month > 3))
+	{
+		std::cerr << "Error : invalid year, data only goes from 2009 to March 2022" << std::endl;
+		return (false);
+	}
+	if (month < 1 || month > 12)
+	{
+		std::cerr << "Error : invalid month" << std::endl;
+		return (false);
+	}
+	if (day < 1 || day > 31)
+	{
+		std::cerr << "Error : invalid day" << std::endl;
+		return (false);
+	}
+	if ((month == 4 || month == 6 || month == 9 || month == 11) && day > 30)
+	{
+		std::cerr << "Error : invalid day" << std::endl;
+		return (false);
+	}
+	if (month == 2)
+	{
+		if ((year % 4 == 0 && day > 29) || (year % 4 != 0 && day > 28))
+		{
+			std::cerr << "Error : invalid day" << std::endl;
+			return (false);
+		}
+	}
+	return (true);
+}
+
+void	BitcoinExchange::print_result(std::string date, float value)
 {
 	std::map<std::string, float>::iterator it = _dataContainer.lower_bound(date);
-	// std::map<std::string, float>::iterator ite = _dataContainer.end();
-	// while (it != ite)
-	// {
-	// 	std::cout << it->first << "," << it->second << std::endl;
-	// 	it++;
-	// }
-	std::cout << date << " " << value << std::endl;
-	std::cout << it->first << " " << it->second << "\n"<< std::endl;
+
+	if (date.compare(it->first) != 0 && it != _dataContainer.begin())
+		it--;
+	std::cout << std::fixed << std::setprecision(2) << date << " => " << value << " = " << (it->second * value) << std ::endl;
 }
 
 void	BitcoinExchange::fill_data_container()
