@@ -85,48 +85,51 @@ void	RPN::calculator()
 	{
 		std::cerr << "Error" << std::endl;
 	}
-	for (unsigned long i = 0; i < _arg.length(); i++)
+	else
 	{
-		while (_arg.at(i) == ' ')
-			i++;
-		if (isdigit(_arg.at(i)))
-			_stack.push(_arg.at(i));
-		if (_arg.at(i) == '*')
+		for (unsigned long i = 0; i < _arg.length(); i++)
 		{
-			int nb2 = _stack.top();
-			_stack.pop();
-			int nb1 = _stack.top();
-			_stack.pop();
-			int result = nb1 * nb2;
-			_stack.push(result);
+			while (_arg.at(i) == ' ')
+				i++;
+			if (isdigit(_arg.at(i)))
+				_stack.push(_arg.at(i));
+			if (_arg.at(i) == '*')
+			{
+				int nb2 = _stack.top();
+				_stack.pop();
+				int nb1 = _stack.top();
+				_stack.pop();
+				int result = nb1 * nb2;
+				_stack.push(result);
+			}
+			if (_arg.at(i) == '/')
+			{
+				int nb2 = _stack.top();
+				_stack.pop();
+				int nb1 = _stack.top();
+				_stack.pop();
+				int result = nb1 / nb2;
+				_stack.push(result);
+			}
+			if (_arg.at(i) == '+')
+			{
+				int nb2 = _stack.top();
+				_stack.pop();
+				int nb1 = _stack.top();
+				_stack.pop();
+				int result = nb1 + nb2;
+				_stack.push(result);
+			}
+			if (_arg.at(i) == '-')
+			{
+				int nb2 = _stack.top();
+				_stack.pop();
+				int nb1 = _stack.top();
+				_stack.pop();
+				int result = nb1 - nb2;
+				_stack.push(result);
+			}
 		}
-		if (_arg.at(i) == '/')
-		{
-			int nb2 = _stack.top();
-			_stack.pop();
-			int nb1 = _stack.top();
-			_stack.pop();
-			int result = nb1 / nb2;
-			_stack.push(result);
-		}
-		if (_arg.at(i) == '+')
-		{
-			int nb2 = _stack.top();
-			_stack.pop();
-			int nb1 = _stack.top();
-			_stack.pop();
-			int result = nb1 + nb2;
-			_stack.push(result);
-		}
-		if (_arg.at(i) == '-')
-		{
-			int nb2 = _stack.top();
-			_stack.pop();
-			int nb1 = _stack.top();
-			_stack.pop();
-			int result = nb1 - nb2;
-			_stack.push(result);
-		}
+		std::cout << _stack.top() << std::endl;
 	}
-	std::cout << _stacl
 }
