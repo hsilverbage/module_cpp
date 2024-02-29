@@ -10,7 +10,7 @@ BitcoinExchange::~BitcoinExchange()
 
 }
 
-BitcoinExchange::BitcoinExchange(const BitcoinExchange &rhs)
+BitcoinExchange::BitcoinExchange(const BitcoinExchange &rhs) : _input(rhs._input)
 {
 	*this = rhs;
 }

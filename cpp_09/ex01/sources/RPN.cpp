@@ -8,7 +8,7 @@ RPN::~RPN()
 {
 }
 
-RPN::RPN(const RPN &rhs)
+RPN::RPN(const RPN &rhs) : _arg(rhs._arg)
 {
 	*this = rhs;
 }
@@ -92,7 +92,7 @@ void	RPN::calculator()
 			while (_arg.at(i) == ' ')
 				i++;
 			if (isdigit(_arg.at(i)))
-				_stack.push(_arg.at(i));
+				_stack.push(_arg.at(i) - '0');
 			if (_arg.at(i) == '*')
 			{
 				int nb2 = _stack.top();
@@ -108,6 +108,11 @@ void	RPN::calculator()
 				_stack.pop();
 				int nb1 = _stack.top();
 				_stack.pop();
+				if (nb2 == 0)
+				{
+					std::cerr << "Error : division by zero is impossible" << std::endl;
+					return;
+				}
 				int result = nb1 / nb2;
 				_stack.push(result);
 			}
