@@ -2,17 +2,17 @@
 
 int	main(int argc, char** argv)
 {
-	if (argc < 3)
+	if (argc < 2)
 	{
-		std::cerr << "Error : need at least two arguments" << std::endl;
+		std::cerr << "Error : at least one argument needed" << std::endl;
 		return (-1);
 	}
-	PmergeMe	PmergeMe(argv);
+	PmergeMe	PmergeMe;
 
-	if(PmergeMe.parsing())
-	{
-		PmergeMe.sort_vector();
-		PmergeMe.sort_list();
-	}
+	if (PmergeMe.parsing(argv) == false)
+		return (-1); 
+	PmergeMe.sort_vector();
+	PmergeMe.sort_list();
+
 	return (0);
 }

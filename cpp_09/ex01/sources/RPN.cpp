@@ -23,7 +23,7 @@ RPN&	RPN::operator=(const RPN &rhs)
 	return (*this);
 }
 
-bool	RPN::parsing() // check nb vs operator number
+bool	RPN::parsing()
 {
 	if (_arg.empty())
 		return (false);
