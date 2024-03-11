@@ -57,6 +57,10 @@ bool	PmergeMe::parsing(char** argv)
 		_vector.push_back(nb);
 		_list.push_back(nb);
 	}
+	std::cout << "Before : ";
+	for (size_t i = 0; i < _vector.size(); i++)
+		std::cout << _vector[i] << " ";
+	std::cout << std::endl;
 	return (true);
 }
 
@@ -125,12 +129,15 @@ void	PmergeMe::sort_vector()
 
 	for (size_t	i = 1; i < pairs.size(); i++, nb++)
 	{
+		int		counter = index;
 		std::vector<unsigned int>::iterator it = _vector.begin();
-		index = pow(2, nb) - index;
+		if (counter != 0)
+			index = pow(2, nb) - index;
+		else
+			counter--;
 		if (index > _vector.size())
 			index = _vector.size() - 1;
 		temp = index;
-
 		while (temp != 0)
 		{
 			if (pairs[i].second <= _vector[temp] && pairs[i].second >= _vector[temp - 1])
@@ -139,30 +146,39 @@ void	PmergeMe::sort_vector()
 				break;
 			}
 			temp--;
+			if (temp == 0)
+				_vector.insert(it, pairs[i].second);
 		}
 	}
-
 	std::vector<unsigned int>::iterator it = _vector.begin();
 	if (oddNb != -1)
 	{
 		unsigned int odd = oddNb;
+
 		if (odd > _vector[0])
 		{
-			for (size_t i = 1; i <= _vector.size(); i++)
+			for (size_t i = 1; i < _vector.size(); i++)
 			{
-				if (odd < _vector[i] && odd > _vector[i - 1])
+				if (odd <= _vector[i] && odd > _vector[i - 1])
+				{
 					_vector.insert(it + i, odd);
-				if (i == _vector.size())
+					break;
+				}
+				if (i == _vector.size() - 1)
+				{
 					_vector.push_back(odd);
+					break;
+				}
 			}
 		}
 		else
+		{
 			_vector.insert(it, odd);
+		}
 	}
 	for(std::vector<unsigned int>::iterator it = _vector.begin(); it != _vector.end(); it++)
 		std::cout << *it << " ";
 	std::cout << "\n" << std::endl;
-		
 }
 
 
