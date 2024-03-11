@@ -23,7 +23,30 @@ class	PmergeMe
 
 		void	sort_vector();
 		void	sort_deque();
+		template <typename T>
+		void	sort_template(T &container);
 		bool	parsing(char** argv);
+		template <typename T>
+		T		parsing_template(char** argv, T &container);
+
+		class ParsingExceptionNegative : public std::exception
+		{
+			public :
+				virtual const char* what() const throw();
+		};
+
+		class ParsingExceptionMax : public std::exception
+		{
+			public :
+				virtual const char* what() const throw();
+		};
+
+		class ParsingExceptionInvalid : public std::exception
+		{
+			public :
+				virtual const char* what() const throw();
+		};
+
 
 	private :
 
@@ -31,5 +54,7 @@ class	PmergeMe
 		std::deque<unsigned int>	_deque;
 
 };
+
+#include "../sources/PmergeMe.cpp"
 
 #endif
