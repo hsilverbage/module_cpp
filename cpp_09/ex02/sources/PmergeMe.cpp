@@ -64,7 +64,9 @@ bool	PmergeMe::parsing(char** argv)
 	return (true);
 }
 
-bool	check_if_pairs_sorted(std::vector<std::pair<unsigned int, unsigned int> > pairs)
+template <typename T>
+
+bool	check_if_pairs_sorted(T pairs)
 {
 	for (size_t i = 0; i < pairs.size() - 1; i++)
 	{
@@ -74,7 +76,9 @@ bool	check_if_pairs_sorted(std::vector<std::pair<unsigned int, unsigned int> > p
 	return (true);
 }
 
-void	sort_pairs_recursive(std::vector<std::pair<unsigned int, unsigned int> > &pairs)
+template <typename T>
+
+void	sort_pairs_recursive(T &pairs)
 {
 	if (check_if_pairs_sorted(pairs))
 		return;
@@ -185,30 +189,6 @@ void	PmergeMe::sort_vector()
 
 	std::cout << std::fixed << std::setprecision(5);
 	std::cout << "Time to process a range of " << _vector.size() << " elements with std::vector : " << elapsedTime << " us" << std::endl;
-}
-
-bool	check_if_pairs_sorted_deque(std::deque<std::pair<unsigned int, unsigned int> > pairs)
-{
-	for (size_t i = 0; i < pairs.size() - 1; i++)
-	{
-		if (pairs[i] > pairs[i + 1])
-			return (false);
-	}
-	return (true);
-}
-
-void	sort_pairs_recursive(std::deque<std::pair<unsigned int, unsigned int> > &pairs)
-{
-	if (check_if_pairs_sorted_deque(pairs))
-		return;
-	for (size_t i = 0; i < pairs.size() - 1; i++)
-	{
-		if (pairs[i] > pairs[i + 1])
-		{
-			std::swap(pairs[i], pairs[i + 1]);
-			sort_pairs_recursive(pairs);
-		}
-	}
 }
 
 void	PmergeMe::sort_deque()
