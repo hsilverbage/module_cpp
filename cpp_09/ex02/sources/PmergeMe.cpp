@@ -55,9 +55,9 @@ bool	PmergeMe::parsing(char** argv)
 			return (false);
 		}
 		_vector.push_back(nb);
-		_list.push_back(nb);
+		_deque.push_back(nb);
 	}
-	std::cout << "Before : ";
+	std::cout << "Before:\t";
 	for (size_t i = 0; i < _vector.size(); i++)
 		std::cout << _vector[i] << " ";
 	std::cout << std::endl;
@@ -91,6 +91,8 @@ void	sort_pairs_recursive(std::vector<std::pair<unsigned int, unsigned int> > &p
 void	PmergeMe::sort_vector()
 {
 	int	oddNb;
+
+	clock_t startTime = clock();
 
 	if (_vector.size() % 2 != 0)
 	{
@@ -172,71 +174,135 @@ void	PmergeMe::sort_vector()
 			}
 		}
 		else
-		{
 			_vector.insert(it, odd);
+	}
+	clock_t endTime = clock();
+	std::cout << "After:\t";
+	for (size_t i = 0; i < _vector.size(); i++)
+		std::cout << _vector[i] << " ";
+	std::cout << std::endl;
+	double elapsedTime = (endTime - startTime) / (double)(CLOCKS_PER_SEC);
+
+	std::cout << std::fixed << std::setprecision(5);
+	std::cout << "Time to process a range of " << _vector.size() << " elements with std::vector : " << elapsedTime << " us" << std::endl;
+}
+
+bool	check_if_pairs_sorted_deque(std::deque<std::pair<unsigned int, unsigned int> > pairs)
+{
+	for (size_t i = 0; i < pairs.size() - 1; i++)
+	{
+		if (pairs[i] > pairs[i + 1])
+			return (false);
+	}
+	return (true);
+}
+
+void	sort_pairs_recursive(std::deque<std::pair<unsigned int, unsigned int> > &pairs)
+{
+	if (check_if_pairs_sorted_deque(pairs))
+		return;
+	for (size_t i = 0; i < pairs.size() - 1; i++)
+	{
+		if (pairs[i] > pairs[i + 1])
+		{
+			std::swap(pairs[i], pairs[i + 1]);
+			sort_pairs_recursive(pairs);
 		}
 	}
-	for(std::vector<unsigned int>::iterator it = _vector.begin(); it != _vector.end(); it++)
-		std::cout << *it << " ";
-	std::cout << "\n" << std::endl;
 }
 
-
-
-
-
-
-	//start timer
-	//end timer
-
-	// int result = 2;
-
-	// for (int i = 2; i < 10; i++)
-	// {
-	// 	result = pow (2, i) - result;
-	// 	std::cout << result << std::endl;
-	// }
-
-	// std::cout << "VECTOR -->" << std::endl;
-	// for (std::vector<unsigned int>::iterator it = _vector.begin(); it != _vector.end(); it++)
-	// 	std::cout << *it << std::endl;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-void	PmergeMe::sort_list()
+void	PmergeMe::sort_deque()
 {
-	// std::cout << "LIST -->" << std::endl;
-	// for (std::list<unsigned int>::iterator it = _list.begin(); it != _list.end(); it++)
-	// 	std::cout << *it << std::endl;
-	//start timer
-	//end timer
-}
+	int	oddNb;
 
+	clock_t startTime = clock();
+
+	if (_deque.size() % 2 != 0)
+	{
+		oddNb = _deque.back();
+		_deque.pop_back();
+	}
+	else
+		oddNb = -1;
+
+	std::deque<std::pair<unsigned int, unsigned int> > pairs;
+	for (std::deque<unsigned int>::iterator it = _deque.begin(); it != _deque.end(); it++)
+	{
+		std::pair<unsigned int, unsigned int> newPair;
+		std::deque<unsigned int>::iterator itNext = it;
+		++itNext;
+
+		if (*it > *itNext)
+			newPair = std::make_pair(*it, *itNext);
+		else
+			newPair = std::make_pair(*itNext, *it);
+		pairs.push_back(newPair);
+		it++;
+	}
+	sort_pairs_recursive(pairs);
+
+	_deque.clear();
+
+	_deque.push_back(pairs[0].second);
+	for (size_t i = 0; i < pairs.size(); i++)
+		_deque.push_back(pairs[i].first);
+
+
+	size_t	index = 2;
+	size_t	nb = 2;
+	size_t	temp = index;
+
+	for (size_t	i = 1; i < pairs.size(); i++, nb++)
+	{
+		int		counter = index;
+		std::deque<unsigned int>::iterator it = _deque.begin();
+		if (counter != 0)
+			index = pow(2, nb) - index;
+		else
+			counter--;
+		if (index > _deque.size())
+			index = _deque.size() - 1;
+		temp = index;
+		while (temp != 0)
+		{
+			if (pairs[i].second <= _deque[temp] && pairs[i].second >= _deque[temp - 1])
+			{
+				_deque.insert(it + (temp), pairs[i].second);
+				break;
+			}
+			temp--;
+			if (temp == 0)
+				_deque.insert(it, pairs[i].second);
+		}
+	}
+	std::deque<unsigned int>::iterator it = _deque.begin();
+	if (oddNb != -1)
+	{
+		unsigned int odd = oddNb;
+
+		if (odd > _deque[0])
+		{
+			for (size_t i = 1; i < _deque.size(); i++)
+			{
+				if (odd <= _deque[i] && odd > _deque[i - 1])
+				{
+					_deque.insert(it + i, odd);
+					break;
+				}
+				if (i == _deque.size() - 1)
+				{
+					_deque.push_back(odd);
+					break;
+				}
+			}
+		}
+		else
+			_deque.insert(it, odd);
+	}
+	clock_t endTime = clock();
+
+	double elapsedTime = (endTime - startTime) / (double)(CLOCKS_PER_SEC);
+
+	std::cout << std::fixed << std::setprecision(5);
+	std::cout << "Time to process a range of " << _deque.size() << " elements with std::deque : " << elapsedTime << " us" << std::endl;
+}

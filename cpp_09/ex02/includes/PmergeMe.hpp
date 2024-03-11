@@ -4,10 +4,12 @@
 #include <iostream>
 #include <climits>
 #include <vector>
-#include <list>
+#include <deque>
 #include <cstdlib>
 #include <sstream>
 #include <cmath> 
+#include <ctime>
+#include <iomanip>
 
 
 class	PmergeMe
@@ -20,13 +22,13 @@ class	PmergeMe
 		PmergeMe&	operator=(const PmergeMe &rhs);
 
 		void	sort_vector();
-		void	sort_list();
+		void	sort_deque();
 		bool	parsing(char** argv);
 
 	private :
 
 		std::vector<unsigned int>	_vector;
-		std::list<unsigned int>		_list;
+		std::deque<unsigned int>	_deque;
 
 };
 

@@ -12,7 +12,7 @@ int	main(int argc, char** argv)
 	if (PmergeMe.parsing(argv) == false)
 		return (-1); 
 	PmergeMe.sort_vector();
-	PmergeMe.sort_list();
+	PmergeMe.sort_deque();
 
 	return (0);
 }
