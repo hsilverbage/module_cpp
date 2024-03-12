@@ -116,12 +116,12 @@ void	PmergeMe::sort_template(T &container)
 	size_t	index = 2;
 	size_t	nb = 2;
 	size_t	temp = index;
-	int		counter = index;
+	int		counter = 0;
 
 	for (size_t	i = 1; i < pairs.size(); i++)
 	{
 		typename T::iterator it = container.begin();
-		if (counter != 0)
+		if (counter == 0)
 		{
 			index = pow(2, nb) - index;
 			nb++;
@@ -132,14 +132,17 @@ void	PmergeMe::sort_template(T &container)
 		if (index > container.size())
 			index = container.size() - 1;
 		temp = index;
-		while (temp != 0)
+		while (temp < container.size() || temp != 0)
 		{
 			if (pairs[i].second <= container[temp] && pairs[i].second >= container[temp - 1])
 			{
 				container.insert(it + (temp), pairs[i].second);
 				break;
 			}
-			temp--;
+			else if (pairs[i]. second <= container[temp - 1])
+				temp--;
+			else
+				temp++;
 			if (temp == 0)
 				container.insert(it, pairs[i].second);
 		}
@@ -269,7 +272,7 @@ void	PmergeMe::sort_vector()
 	for (size_t	i = 1; i < pairs.size(); i++)
 	{
 		std::vector<unsigned int>::iterator it = _vector.begin();
-		if (counter != 0)
+		if (counter == 0)
 		{
 			index = pow(2, nb) - index;
 			nb++;
@@ -280,14 +283,17 @@ void	PmergeMe::sort_vector()
 		if (index > _vector.size())
 			index = _vector.size() - 1;
 		temp = index;
-		while (temp != 0)
+		while (temp < _vector.size() || temp != 0)
 		{
 			if (pairs[i].second <= _vector[temp] && pairs[i].second >= _vector[temp - 1])
 			{
 				_vector.insert(it + (temp), pairs[i].second);
 				break;
 			}
-			temp--;
+			else if (pairs[i]. second <= _vector[temp - 1])
+				temp--;
+			else
+				temp++;
 			if (temp == 0)
 				_vector.insert(it, pairs[i].second);
 		}
@@ -366,12 +372,12 @@ void	PmergeMe::sort_deque()
 	size_t	index = 2;
 	size_t	nb = 2;
 	size_t	temp = index;
-	int		counter = index;
+	int		counter = 0;
 
 	for (size_t	i = 1; i < pairs.size(); i++)
 	{
 		std::deque<unsigned int>::iterator it = _deque.begin();
-		if (counter != 0)
+		if (counter == 0)
 		{
 			index = pow(2, nb) - index;
 			counter = index;
@@ -382,14 +388,17 @@ void	PmergeMe::sort_deque()
 		if (index > _deque.size())
 			index = _deque.size() - 1;
 		temp = index;
-		while (temp != 0)
+		while (temp < _deque.size() || temp != 0)
 		{
 			if (pairs[i].second <= _deque[temp] && pairs[i].second >= _deque[temp - 1])
 			{
 				_deque.insert(it + (temp), pairs[i].second);
 				break;
 			}
-			temp--;
+			else if (pairs[i]. second <= _deque[temp - 1])
+				temp--;
+			else
+				temp++;
 			if (temp == 0)
 				_deque.insert(it, pairs[i].second);
 		}

@@ -38,7 +38,7 @@ int	main(int argc, char** argv)
 		std::cout << std::endl;
 
 		std::cout << std::fixed << std::setprecision(5);
-		std::cout << "Time to process a range of " << vec.size() << " elements with std::deque : " << elapsedTime << " us" << std::endl;
+		std::cout << "Time to process a range of " << vec.size() << " elements with std::vector : " << elapsedTime << " us" << std::endl;
 
 		startTime = clock();
 		PmergeMe.sort_template(deck);
