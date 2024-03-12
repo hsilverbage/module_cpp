@@ -92,7 +92,7 @@ void	PmergeMe::sort_template(T &container)
 		oddNb = -1;
 
 	std::deque<std::pair<unsigned int, unsigned int> > pairs;
-	for (typename T::iterator it = container.begin(); it != container.end(); it++)
+	for (typename T::iterator it = container.begin(); it != container.end(); it++, it++)
 	{
 		std::pair<unsigned int, unsigned int> newPair;
 		typename T::iterator itNext = it;
@@ -103,7 +103,6 @@ void	PmergeMe::sort_template(T &container)
 		else
 			newPair = std::make_pair(*itNext, *it);
 		pairs.push_back(newPair);
-		it++;
 	}
 	sort_pairs_recursive(pairs);
 
@@ -117,13 +116,17 @@ void	PmergeMe::sort_template(T &container)
 	size_t	index = 2;
 	size_t	nb = 2;
 	size_t	temp = index;
+	int		counter = index;
 
-	for (size_t	i = 1; i < pairs.size(); i++, nb++)
+	for (size_t	i = 1; i < pairs.size(); i++)
 	{
-		int		counter = index;
 		typename T::iterator it = container.begin();
 		if (counter != 0)
+		{
 			index = pow(2, nb) - index;
+			nb++;
+			counter = index;
+		}
 		else
 			counter--;
 		if (index > container.size())
@@ -237,7 +240,7 @@ void	PmergeMe::sort_vector()
 		oddNb = -1;
 
 	std::vector<std::pair<unsigned int, unsigned int> > pairs;
-	for (std::vector<unsigned int>::iterator it = _vector.begin(); it != _vector.end(); it++)
+	for (std::vector<unsigned int>::iterator it = _vector.begin(); it != _vector.end(); it++, it++)
 	{
 		std::pair<unsigned int, unsigned int> newPair;
 		std::vector<unsigned int>::iterator itNext = it;
@@ -248,7 +251,6 @@ void	PmergeMe::sort_vector()
 		else
 			newPair = std::make_pair(*itNext, *it);
 		pairs.push_back(newPair);
-		it++;
 	}
 	sort_pairs_recursive(pairs);
 
@@ -262,13 +264,17 @@ void	PmergeMe::sort_vector()
 	size_t	index = 2;
 	size_t	nb = 2;
 	size_t	temp = index;
+	int		counter = index;
 
-	for (size_t	i = 1; i < pairs.size(); i++, nb++)
+	for (size_t	i = 1; i < pairs.size(); i++)
 	{
-		int		counter = index;
 		std::vector<unsigned int>::iterator it = _vector.begin();
 		if (counter != 0)
+		{
 			index = pow(2, nb) - index;
+			nb++;
+			counter = index;
+		}
 		else
 			counter--;
 		if (index > _vector.size())
@@ -336,7 +342,7 @@ void	PmergeMe::sort_deque()
 		oddNb = -1;
 
 	std::deque<std::pair<unsigned int, unsigned int> > pairs;
-	for (std::deque<unsigned int>::iterator it = _deque.begin(); it != _deque.end(); it++)
+	for (std::deque<unsigned int>::iterator it = _deque.begin(); it != _deque.end(); it++, it++)
 	{
 		std::pair<unsigned int, unsigned int> newPair;
 		std::deque<unsigned int>::iterator itNext = it;
@@ -347,7 +353,6 @@ void	PmergeMe::sort_deque()
 		else
 			newPair = std::make_pair(*itNext, *it);
 		pairs.push_back(newPair);
-		it++;
 	}
 	sort_pairs_recursive(pairs);
 
@@ -361,13 +366,17 @@ void	PmergeMe::sort_deque()
 	size_t	index = 2;
 	size_t	nb = 2;
 	size_t	temp = index;
+	int		counter = index;
 
-	for (size_t	i = 1; i < pairs.size(); i++, nb++)
+	for (size_t	i = 1; i < pairs.size(); i++)
 	{
-		int		counter = index;
 		std::deque<unsigned int>::iterator it = _deque.begin();
 		if (counter != 0)
+		{
 			index = pow(2, nb) - index;
+			counter = index;
+			nb++;
+		}
 		else
 			counter--;
 		if (index > _deque.size())
