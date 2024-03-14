@@ -89,8 +89,10 @@ void	RPN::calculator()
 	{
 		for (unsigned long i = 0; i < _arg.length(); i++)
 		{
-			while (_arg.at(i) == ' ')
+			while (i < _arg.length() && _arg.at(i) == ' ')
 				i++;
+			if (i == _arg.length())
+				break ;
 			if (isdigit(_arg.at(i)))
 				_stack.push(_arg.at(i) - '0');
 			if (_arg.at(i) == '*')
@@ -102,7 +104,7 @@ void	RPN::calculator()
 				int result = nb1 * nb2;
 				_stack.push(result);
 			}
-			if (_arg.at(i) == '/')
+			else if (_arg.at(i) == '/')
 			{
 				int nb2 = _stack.top();
 				_stack.pop();
@@ -116,7 +118,7 @@ void	RPN::calculator()
 				int result = nb1 / nb2;
 				_stack.push(result);
 			}
-			if (_arg.at(i) == '+')
+			else if (_arg.at(i) == '+')
 			{
 				int nb2 = _stack.top();
 				_stack.pop();
@@ -125,7 +127,7 @@ void	RPN::calculator()
 				int result = nb1 + nb2;
 				_stack.push(result);
 			}
-			if (_arg.at(i) == '-')
+			else if (_arg.at(i) == '-')
 			{
 				int nb2 = _stack.top();
 				_stack.pop();

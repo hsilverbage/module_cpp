@@ -24,34 +24,8 @@ PmergeMe&	PmergeMe::operator=(const PmergeMe &rhs)
 	return (*this);
 }
 
-template <typename T>
 
-T	PmergeMe::parsing_template(char** argv, T &container)
-{
-	for (unsigned int i = 1; argv[i]; i++)
-	{
-		std::stringstream	ss(argv[i]);
-		std::string	str = argv[i];
-		long	nb;
-
-		ss >> nb;
-		ss.str();
-		if(ss.fail())
-			throw ParsingExceptionInvalid();
-		if (nb < 0)
-			throw ParsingExceptionNegative();
-		if (nb > UINT_MAX)
-			throw ParsingExceptionMax();
-		if(str.find_first_not_of("0123456789") != std::string::npos)
-			throw ParsingExceptionInvalid();
-		container.push_back(nb);
-	}
-	return (container);
-}
-
-template <typename T>
-
-bool	check_if_pairs_sorted(T pairs)
+bool	check_if_pairs_sorted_vector(std::vector<std::pair<unsigned int, unsigned int> > &pairs)
 {
 	for (size_t i = 0; i < pairs.size() - 1; i++)
 	{
@@ -61,115 +35,44 @@ bool	check_if_pairs_sorted(T pairs)
 	return (true);
 }
 
-template <typename T>
-
-void	sort_pairs_recursive(T &pairs)
+void	sort_pairs_recursive_vector(std::vector<std::pair<unsigned int, unsigned int> > &pairs)
 {
-	if (check_if_pairs_sorted(pairs))
+	if (sort_pairs_recursive_vector(pairs);)
 		return;
+	static size_t i = 0;
+	for (; i < pairs.size() - 1; i++)
+	{
+		if (pairs[i] > pairs[i + 1])
+		{
+			std::swap(pairs[i], pairs[i + 1]);
+			i = 0;
+			sort_pairs_recursive_vector(pairs);
+		}
+	}
+}
+
+bool	check_if_pairs_sorted_deque(std::deque<std::pair<unsigned int, unsigned int> > &pairs)
+{
+	for (size_t i = 0; i < pairs.size() - 1; i++)
+	{
+		if (pairs[i] > pairs[i + 1])
+			return (false);
+	}
+	return (true);
+}
+
+void	sort_pairs_recursive_deque(std::deque<std::pair<unsigned int, unsigned int> > &pairs)
+{
+	if (std::sort(pairs.begin(), pairs.end()) == pairs)
+		return;
+
 	for (size_t i = 0; i < pairs.size() - 1; i++)
 	{
 		if (pairs[i] > pairs[i + 1])
 		{
 			std::swap(pairs[i], pairs[i + 1]);
-			sort_pairs_recursive(pairs);
+			sort_pairs_recursive_deque(pairs);
 		}
-	}
-}
-
-template <typename T>
-
-void	PmergeMe::sort_template(T &container)
-{
-	int	oddNb;
-
-	if (container.size() % 2 != 0)
-	{
-		oddNb = container.back();
-		container.pop_back();
-	}
-	else
-		oddNb = -1;
-
-	std::deque<std::pair<unsigned int, unsigned int> > pairs;
-	for (typename T::iterator it = container.begin(); it != container.end(); it++, it++)
-	{
-		std::pair<unsigned int, unsigned int> newPair;
-		typename T::iterator itNext = it;
-		++itNext;
-
-		if (*it > *itNext)
-			newPair = std::make_pair(*it, *itNext);
-		else
-			newPair = std::make_pair(*itNext, *it);
-		pairs.push_back(newPair);
-	}
-	sort_pairs_recursive(pairs);
-
-	container.clear();
-
-	container.push_back(pairs[0].second);
-	for (size_t i = 0; i < pairs.size(); i++)
-		container.push_back(pairs[i].first);
-
-
-	size_t	index = 2;
-	size_t	nb = 2;
-	size_t	temp = index;
-	int		counter = 0;
-
-	for (size_t	i = 1; i < pairs.size(); i++)
-	{
-		typename T::iterator it = container.begin();
-		if (counter == 0)
-		{
-			index = pow(2, nb) - index;
-			nb++;
-			counter = index;
-		}
-		else
-			counter--;
-		if (index > container.size())
-			index = container.size() - 1;
-		temp = index;
-		while (temp < container.size() || temp != 0)
-		{
-			if (pairs[i].second <= container[temp] && pairs[i].second >= container[temp - 1])
-			{
-				container.insert(it + (temp), pairs[i].second);
-				break;
-			}
-			else if (pairs[i]. second <= container[temp - 1])
-				temp--;
-			else
-				temp++;
-			if (temp == 0)
-				container.insert(it, pairs[i].second);
-		}
-	}
-	typename T::iterator it = container.begin();
-	if (oddNb != -1)
-	{
-		unsigned int odd = oddNb;
-
-		if (odd > container[0])
-		{
-			for (size_t i = 1; i < container.size(); i++)
-			{
-				if (odd <= container[i] && odd > container[i - 1])
-				{
-					container.insert(it + i, odd);
-					break;
-				}
-				if (i == container.size() - 1)
-				{
-					container.push_back(odd);
-					break;
-				}
-			}
-		}
-		else
-			container.insert(it, odd);
 	}
 }
 
@@ -255,8 +158,8 @@ void	PmergeMe::sort_vector()
 			newPair = std::make_pair(*itNext, *it);
 		pairs.push_back(newPair);
 	}
-	sort_pairs_recursive(pairs);
-
+	sort_pairs_recursive_vector(pairs);
+	// std::sort(pairs.begin(), pairs.end());
 	_vector.clear();
 
 	_vector.push_back(pairs[0].second);
@@ -283,7 +186,7 @@ void	PmergeMe::sort_vector()
 		if (index > _vector.size())
 			index = _vector.size() - 1;
 		temp = index;
-		while (temp < _vector.size() || temp != 0)
+		while (temp < _vector.size() && temp != 0)
 		{
 			if (pairs[i].second <= _vector[temp] && pairs[i].second >= _vector[temp - 1])
 			{
@@ -360,8 +263,8 @@ void	PmergeMe::sort_deque()
 			newPair = std::make_pair(*itNext, *it);
 		pairs.push_back(newPair);
 	}
-	sort_pairs_recursive(pairs);
-
+	// sort_pairs_recursive_deque(pairs);
+	std::sort(pairs.begin(), pairs.end());
 	_deque.clear();
 
 	_deque.push_back(pairs[0].second);
@@ -388,7 +291,7 @@ void	PmergeMe::sort_deque()
 		if (index > _deque.size())
 			index = _deque.size() - 1;
 		temp = index;
-		while (temp < _deque.size() || temp != 0)
+		while (temp < _deque.size() && temp != 0)
 		{
 			if (pairs[i].second <= _deque[temp] && pairs[i].second >= _deque[temp - 1])
 			{

@@ -10,6 +10,7 @@
 #include <cmath> 
 #include <ctime>
 #include <iomanip>
+#include <algorithm>
 
 
 class	PmergeMe
@@ -23,11 +24,7 @@ class	PmergeMe
 
 		void	sort_vector();
 		void	sort_deque();
-		template <typename T>
-		void	sort_template(T &container);
 		bool	parsing(char** argv);
-		template <typename T>
-		T		parsing_template(char** argv, T &container);
 
 		class ParsingExceptionNegative : public std::exception
 		{

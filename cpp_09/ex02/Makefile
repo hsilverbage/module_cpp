@@ -1,7 +1,7 @@
 NAME	= PmergeMe
 
 CC		= c++
-FLAGS	= -std=c++98 -Wall -Wextra -Werror
+FLAGS	= -std=c++98 -Wall -Wextra -Werror -g
 RM		= rm -rf
 
 GREEN		=	\e[92;5;118m
